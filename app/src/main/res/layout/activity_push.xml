@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.teachPack.live.PushActivity">
+    tools:context=".ui.common.video.PushActivity">
 
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:id="@+id/push_live"

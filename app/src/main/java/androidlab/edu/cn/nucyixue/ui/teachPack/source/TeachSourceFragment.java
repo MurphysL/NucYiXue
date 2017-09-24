@@ -2,6 +2,7 @@ package androidlab.edu.cn.nucyixue.ui.teachPack.source;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +36,7 @@ public class TeachSourceFragment extends BaseFragment {
 
 
     @Override
-    protected void init() {
+    protected void init(View mView, Bundle mSavedInstanceState) {
         mTeacherSourceAdapter = new TeachSourceAdapter(getContext());
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mTeachSourceRecycler.setLayoutManager(mLinearLayoutManager);

@@ -11,6 +11,7 @@
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorSplitWhite">#dadada</color>
+    <color name="colorBg">#e8eff5</color>
 
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>

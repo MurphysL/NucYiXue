@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
@@ -26,6 +28,7 @@ import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
+import com.squareup.picasso.Picasso;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -38,21 +41,31 @@ import java.util.List;
 import java.util.Map;
 
 import androidlab.edu.cn.nucyixue.R;
+import androidlab.edu.cn.nucyixue.base.AnimCommonAdapter;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.Book;
+import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
+import androidlab.edu.cn.nucyixue.net.AVService;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
+import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
+import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import androidlab.edu.cn.nucyixue.utils.config.LiveType;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bingoogolapple.bgabanner.BGABanner;
+import io.reactivex.functions.Consumer;
 
 /**
+ * 待重构
+ * 滑动冲突？
+ *
  * A simple {@link Fragment} subclass.
  */
 public class FindFragment extends BaseFragment {
@@ -81,13 +94,16 @@ public class FindFragment extends BaseFragment {
 
     private boolean hasGotToken = false;
 
+    private AnimCommonAdapter<Live> adapter;
+    private List<Live> list = new ArrayList<>();
+
 
     public static FindFragment getInstance() {
         return new FindFragment();
     }
 
     @Override
-    protected void init() {
+    protected void init(View mView, Bundle mSavedInstanceState) {
         mBannerGuideContent.setAdapter(new BGABanner.Adapter<ImageView, Integer>() {
             @Override
             public void fillBannerItem(BGABanner banner, ImageView itemView, Integer model, int position) {
@@ -109,13 +125,17 @@ public class FindFragment extends BaseFragment {
 
         CommonAdapter<LiveType> adapter = new CommonAdapter<LiveType>(getContext(), R.layout.item_type, types) {
             @Override
-            protected void convert(ViewHolder holder, LiveType liveType, int position) {
+            protected void convert(ViewHolder holder, final LiveType liveType, int position) {
                 holder.setImageResource(R.id.type_icon, liveType.getIcon());
                 holder.setText(R.id.type_name, liveType.getValue());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Bundle mBundle = new Bundle();
+                        mBundle.putString("subjectName", liveType.getValue());
+                        Intent mIntent = new Intent(getContext(), SubjectContentActivity.class);
+                        mIntent.putExtras(mBundle);
+                        startActivity(mIntent);
                     }
                 });
             }
@@ -184,7 +204,70 @@ public class FindFragment extends BaseFragment {
             }
         });
 
+        initRecyclerView();
+        fetchData();
+    }
 
+    private void fetchData() {
+        AVService.INSTANCE.queryHotLive().subscribe(new Consumer<Live>() {
+            @Override
+            public void accept(Live live) throws Exception {
+                list.add(live);
+                adapter.notifyDataSetChanged();
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                Log.i(TAG, throwable.toString());
+            }
+        });
+    }
+
+    private void initRecyclerView() {
+        mFindLiveRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new AnimCommonAdapter<Live>(getContext(), R.layout.item_live, list) {
+            @Override
+            protected void convert(ViewHolder holder, final Live live, int position) {
+                if(live != null){
+                    holder.setText(R.id.live_name, live.getName());
+                    holder.setText(R.id.live_type, live.getType());
+                    holder.setRating(R.id.live_star, live.getStar());
+                    holder.setText(R.id.live_join_num, live.getNum() + "");
+                    holder.setText(R.id.live_speaker, live.getUsername());
+                    Picasso.with(getContext())
+                            .load(live.getPic())
+                            .into((ImageView) holder.getView(R.id.live_pic));
+                    holder.setOnClickListener(R.id.live_info, new View.OnClickListener(){
+                        @Override
+                        public void onClick(View view) {
+                            AVUser user = AVUser.getCurrentUser();
+                            if(user != null){
+                                AVService.INSTANCE.queryJoinedByLUId(live.getObjectId(), user.getObjectId())
+                                        .subscribe(
+                                                new Consumer<LU>() {
+                                                    @Override
+                                                    public void accept(LU lu) throws Exception {
+                                                       /* if(lu.getComment() == null && lu.getStar() == 0){ // 未评价
+                                                            enterComment(t, lu)
+                                                        }else{
+                                                            if(t.isText == LCConfig.LIVE_TEXT) enterLive(t) else enterVideo(t)
+                                                        }*/
+                                                    }
+                                                },
+                                                new Consumer<Throwable>() {
+                                                    @Override
+                                                    public void accept(Throwable throwable) throws Exception {
+
+                                                    }
+                                                }
+                                        );
+                            }
+                        }
+                    });
+                }
+            }
+        };
+        mFindLiveRecycler.setAdapter(adapter);
     }
 
     private void displayBanner() {
@@ -198,7 +281,6 @@ public class FindFragment extends BaseFragment {
     }
 
     private void displayFlexSubject(List<Map.Entry<String, Integer>> mapping) {
-        //String[] tags = {"Java程序设计", "计算机网络", "英语", "高等数学", "线性代数", "离散数学", "大学计算机基础"};
         for (int i = 0; i < DISPLAY_NUM; i++) {
             Subject model = new Subject();
             model.setId(i);
@@ -244,7 +326,6 @@ public class FindFragment extends BaseFragment {
     public void onViewClicked() {
         getActivity().startActivityForResult(new Intent(getActivity(), MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
     }
-
 
     private void searchKeyword(Book book) {
         Log.i(TAG, "book : " + book.toString());

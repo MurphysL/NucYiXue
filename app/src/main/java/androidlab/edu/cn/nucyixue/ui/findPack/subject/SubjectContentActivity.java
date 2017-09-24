@@ -1,6 +1,5 @@
 package androidlab.edu.cn.nucyixue.ui.findPack.subject;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,9 +8,10 @@ import android.widget.TextView;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
+import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SubjectContentActivity extends BaseActivity {
@@ -32,11 +32,14 @@ public class SubjectContentActivity extends BaseActivity {
     @BindView(R.id.subject_content_title)
     TextView mSubjectContentTitle;
 
+    private String subject;
+
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {
 
         Bundle mBundle = getIntent().getExtras();
-        mSubjectContentTitle.setText(mBundle.getString("subjectName"));
+        subject = mBundle.getString("subjectName");
+        mSubjectContentTitle.setText(subject);
         mSubjectContentToolbar.setTitle("");
 
         setSupportActionBar(mSubjectContentToolbar);
@@ -51,17 +54,35 @@ public class SubjectContentActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        initFragment();
+    }
+
+    private void initFragment() {
+        LiveFragment fragment = LiveFragment.getInstance();
+        Bundle bundle = new Bundle();
+        bundle.putString("subject", subject);
+        bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getSUBJECT());
+        fragment.setArguments(bundle);
+        ActivityUtils.replaceFragmentToActivity(mFragmentManager, fragment, R.id.content_content_frame);
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.activity_subject_content;
     }
-
-
 
     @OnClick({R.id.content_live, R.id.content_source, R.id.content_near, R.id.content_xuanshang})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.content_live:
-                ActivityUtils.replaceFragmentToActivity(mFragmentManager, SubjectLiveFragment.getInstance(), R.id.content_content_frame);
+                LiveFragment fragment = LiveFragment.getInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("subject", subject);
+                bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getSUBJECT());
+                fragment.setArguments(bundle);
+                ActivityUtils.replaceFragmentToActivity(mFragmentManager, fragment, R.id.content_content_frame);
                 break;
             case R.id.content_source:
                 ActivityUtils.replaceFragmentToActivity(mFragmentManager, SubjectSourceFragment.getInstance(), R.id.content_content_frame);

@@ -95,7 +95,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.bmob.pay.v3.act.PayActivity" />git
+        <activity android:name="cn.bmob.pay.v3.act.PayActivity" />
         <activity android:name=".ui.mePack.LoginActivity"/>
         <activity android:name=".ui.mePack.RegisterActivity"/>
         <activity android:name=".ui.mePack.MeSmallActivity"/>
@@ -104,13 +104,16 @@
         <activity android:name=".ui.findPack.FindSearchActivity"/>
         <activity android:name=".ui.findPack.FindMajorActivity"/>
         <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity"/>
-        <activity android:name=".ui.teachPack.live.CreateLiveActivity" android:theme="@style/DetailsTheme" />
-        <activity android:name=".ui.imPack.ConversationActivity" />
-        <activity android:name=".ui.teachPack.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
+        <activity android:name=".ui.common.live.CreateLiveActivity" android:theme="@style/DetailsTheme" />
+        <activity android:name=".ui.common.im.ConversationActivity" />
+        <activity android:name=".ui.common.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
-        <activity android:name=".ui.teachPack.live.PushActivity"/>
-        <activity android:name=".ui.teachPack.live.PlayActivity"/>
-        <activity android:name=".ui.common.LiveDetailActivity"/>
+        <activity android:name=".ui.common.video.PushActivity"/>
+        <activity android:name=".ui.common.video.PlayActivity"/>
+        <activity android:name=".ui.common.live.LiveDetailActivity"/>
+        <activity android:name=".ui.common.camera.CameraActivity"/>
+        <activity android:name=".ui.teachPack.reward.XuanshangSendActivity"/>
+        <activity android:name=".ui.teachPack.reward.XuanshangGetActivity"/>
 
         <service android:name=".service.LiveAudioService"/>
 

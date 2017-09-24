@@ -17,5 +17,14 @@ class LiveFragmentType{
 
         @JvmStatic
         val CREATED = "created"
+
+        @JvmStatic
+        val COMMON = "common"
+
+        @JvmStatic
+        val SUBJECT = "subject"
+
+        @JvmStatic
+        val HOT = "hot"
     }
 }

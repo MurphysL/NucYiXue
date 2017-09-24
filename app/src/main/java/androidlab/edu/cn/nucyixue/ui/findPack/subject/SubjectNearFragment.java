@@ -22,7 +22,7 @@ public class SubjectNearFragment extends BaseFragment {
     }
 
     @Override
-    protected void init() {
+    protected void init(View mView, Bundle mSavedInstanceState) {
 
     }
 

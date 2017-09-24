@@ -6,30 +6,25 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
-
 import com.google.gson.Gson;
-
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.data.bean.Book;
 import androidlab.edu.cn.nucyixue.data.bean.Keyword;
 import androidlab.edu.cn.nucyixue.data.bean.OCRResult;
-import androidlab.edu.cn.nucyixue.net.KeywordService;
 import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
+import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.findPack.FindFragment;
+import androidlab.edu.cn.nucyixue.ui.map.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.mePack.MeFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.TeachFragment;
-import androidlab.edu.cn.nucyixue.ui.teachPack.live.CommonLiveFragment;
-import androidlab.edu.cn.nucyixue.ui.xuanshangPack.XuanshangFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.BottomNavigationViewHelper;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -63,8 +58,8 @@ public class MainActivity extends BaseActivity {
                     case R.id.teach_item:
                         ActivityUtils.replaceFragmentToActivity(mFragmentManager, TeachFragment.getInstance(),R.id.content_main);
                         break;
-                    case R.id.addque_item:
-                        ActivityUtils.replaceFragmentToActivity(mFragmentManager, XuanshangFragment.getInstance(),R.id.content_main);
+                    case R.id.near_item:
+                        ActivityUtils.replaceFragmentToActivity(mFragmentManager, TeachMapFragment.getInstance(),R.id.content_main);
                         break;
                     case R.id.me_item:
                         ActivityUtils.replaceFragmentToActivity(mFragmentManager, MeFragment.getInstance(),R.id.content_main);
@@ -119,7 +114,8 @@ public class MainActivity extends BaseActivity {
                                                             keys.addAll(keyword.getShowapi_res_body().getList());
                                                             Bundle b = new Bundle();
                                                             b.putSerializable("keys", keys);
-                                                            CommonLiveFragment fragment = new CommonLiveFragment();
+                                                            b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+                                                            LiveFragment fragment = LiveFragment.getInstance();
                                                             fragment.setArguments(b);
                                                             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_main);
                                                         }
@@ -175,7 +171,8 @@ public class MainActivity extends BaseActivity {
 
         Bundle b = new Bundle();
         b.putSerializable("keys", keys);
-        CommonLiveFragment fragment = new CommonLiveFragment();
+        b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+        LiveFragment fragment = LiveFragment.getInstance();
         fragment.setArguments(b);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_main);
     }

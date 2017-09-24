@@ -6,8 +6,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
 import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
-import androidlab.edu.cn.nucyixue.ui.common.LiveFragment;
+import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
@@ -55,8 +57,8 @@ public class MeFragment extends BaseFragment {
 
     @BindView(R.id.toolbar_me)
     Toolbar mToolbarMe;
-    @BindView(R.id.toolbar_title)
-    TextView mToolbarTitle;
+    /*    @BindView(R.id.toolbar_title)
+        TextView mToolbarTitle;*/
     @BindView(R.id.me_name)
     TextView mMeName;
     @BindView(R.id.me_major)
@@ -81,7 +83,6 @@ public class MeFragment extends BaseFragment {
     ImageView mMyImageBack;
     @BindView(R.id.my_image_setting)
     ImageView mMyImageSetting;
-
     @BindView(R.id.me_image_avatar)
     CircleImageView avatar;
     @BindView(R.id.textView2)
@@ -91,14 +92,17 @@ public class MeFragment extends BaseFragment {
     @BindView(R.id.live_num)
     TextView liveNum;
     Unbinder unbinder;
+    Unbinder unbinder1;
 
     public static MeFragment getInstance() {
         return new MeFragment();
     }
 
     @Override
-    protected void init() {
-
+    protected void init(View mView, Bundle mSavedInstanceState) {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMe);
+        setHasOptionsMenu(true); // 设置 Fragment 标题
+        mToolbarMe.setTitle(getString(R.string.me_fragment_title));
     }
 
     @OnClick(R.id.me_image_avatar)
@@ -122,7 +126,7 @@ public class MeFragment extends BaseFragment {
                         .load(uri)
                         .into(avatar);
 
-                String path = FileUtils.getFilePahtFromUri(getContext(), uri);
+                String path = FileUtils.getFilePathFromUri(getContext(), uri);
                 if (path != null) {
                     try {
                         final AVFile file = AVFile.withAbsoluteLocalPath(FileUtils.getFileName(path), path);
@@ -195,7 +199,9 @@ public class MeFragment extends BaseFragment {
                 @Override
                 public void done(List<LU> list, AVException e) {
                     if (e == null && !list.isEmpty()) {
-                        liveNum.setText(list.size() + "");
+                        if(liveNum != null){
+                            liveNum.setText(list.size() + "");
+                        }
                     }
                 }
             });
@@ -204,14 +210,13 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void logic() {
-        //进入注册界面
         RxView.clicks(mMeMore)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object mO) throws Exception {
-                        Intent mIntent = new Intent(getContext(), LoginActivity.class);
-                        startActivity(mIntent);
+                        //Intent mIntent = new Intent(getContext(), LoginActivity.class);
+                        //startActivity(mIntent);
                     }
                 });
     }
@@ -224,15 +229,24 @@ public class MeFragment extends BaseFragment {
         Glide.with(getContext())
                 .load(R.drawable.hold)
                 .into(avatar);
+        startActivity(new Intent(getActivity(), LoginActivity.class));
+        getActivity().finish();
     }
 
     @OnClick(R.id.live_layout)
     public void onLiveClicked() {
-        Log.i(TAG, "onLiveClicked");
-        //MyLiveFragment fragment = MyLiveFragment.getInstance();
         LiveFragment fragment = LiveFragment.getInstance();
         Bundle bundle = new Bundle();
         bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getJOINED());
+        fragment.setArguments(bundle);
+        ActivityUtils.replaceFragmentToActivity(getActivity().getSupportFragmentManager(), fragment, R.id.content_main);
+    }
+
+    @OnClick(R.id.speaker_layout)
+    public void onSpeakerClicked() {
+        LiveFragment fragment = LiveFragment.getInstance();
+        Bundle bundle = new Bundle();
+        bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getCREATED());
         fragment.setArguments(bundle);
         ActivityUtils.replaceFragmentToActivity(getActivity().getSupportFragmentManager(), fragment, R.id.content_main);
     }

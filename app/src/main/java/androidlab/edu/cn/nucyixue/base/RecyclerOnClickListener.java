@@ -3,6 +3,8 @@ package androidlab.edu.cn.nucyixue.base;
 import android.view.View;
 
 /**
+ * RecyclerOnClickListener
+ *
  * Created by dreamY on 2017/7/27.
  */
 

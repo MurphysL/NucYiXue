@@ -33,7 +33,7 @@
             android:id="@+id/live_star"
             style="@android:style/Widget.Material.Light.RatingBar.Small"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/live_name"
             android:layout_marginTop="10dp"
             android:isIndicator="true"
