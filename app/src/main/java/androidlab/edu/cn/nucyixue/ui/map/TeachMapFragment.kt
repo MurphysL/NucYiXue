@@ -169,7 +169,7 @@ class TeachMapFragment : Fragment() {
      */
     private fun mark(team: MarkerOptions, icon: Int) {
         team.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(getResources(), icon)))
+                .decodeResource(resources, icon)))
     }
     private fun initMap() {
         aMap.moveCamera(CameraUpdateFactory.zoomTo(18.0F))

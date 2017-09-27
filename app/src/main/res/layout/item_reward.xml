@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar"
+                    android:src="@mipmap/ic_launcher_round"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/name"
+                    android:text="哇哈哈"
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/des"
+                    android:layout_marginTop="10dp"
+                    android:text="sfsfdsfsdfsf"
+                    android:layout_below="@+id/name"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_below="@+id/des"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp">
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:minWidth="40dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/money_icon"
+                            android:src="@drawable/ic_monetization_on_black_24dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/money"
+                            android:layout_toEndOf="@id/money_icon"
+                            android:layout_width="wrap_content"
+                            android:text="1"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:text="元"
+                            android:layout_toEndOf="@+id/money"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/loc_icon"
+                            android:src="@drawable/ic_place_black_24dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/loc"
+                            android:layout_toEndOf="@id/loc_icon"
+                            android:layout_width="wrap_content"
+                            android:maxLines="1"
+                            android:text="主楼"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_height="match_parent" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/time_icon"
+                            android:src="@drawable/ic_access_time_black_24dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:id="@+id/money"
+                            android:layout_toEndOf="@id/time_icon"
+                            android:layout_width="wrap_content"
+                            android:text="1"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

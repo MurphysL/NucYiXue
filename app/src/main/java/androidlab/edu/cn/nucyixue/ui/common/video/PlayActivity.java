@@ -38,7 +38,6 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         ButterKnife.bind(this);
         init();
-
     }
     /*
        播放地址 (RTMP)：	rtmp://10305.liveplay.myqcloud.com/live/10305_d716621c0f
@@ -46,8 +45,10 @@ public class PlayActivity extends AppCompatActivity {
        播放地址 (HLS)：	http://10305.liveplay.myqcloud.com/live/10305_d716621c0f.m3u8
      */
     private void init() {
+        Log.i(TAG, "123");
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
+            Log.i(TAG, "GET BUNDLE");
             Live live = bundle.getParcelable(LCConfig.getLIVE_TABLE());
             if(live != null){
                 Log.i(TAG, live.toString());

@@ -18,6 +18,7 @@ import androidlab.edu.cn.nucyixue.data.bean.Live
 import androidlab.edu.cn.nucyixue.net.AVService
 import androidlab.edu.cn.nucyixue.ui.common.im.ConversationActivity
 import androidlab.edu.cn.nucyixue.ui.common.video.PlayActivity
+import androidlab.edu.cn.nucyixue.ui.common.video.PushActivity
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType
 import cn.leancloud.chatkit.LCChatKit
@@ -370,8 +371,16 @@ class LiveFragment : Fragment(){
 
     //直播 Live 页面
     private fun enterVideo(live: Live) {
-        val intent = Intent(activity, PlayActivity::class.java)
-        intent.putExtra(LCConfig.LIVE_TABLE, live)
+        Log.i(TAG, live.userId)
+        Log.i(TAG, AVUser.getCurrentUser().objectId)
+        val intent : Intent = if(live.userId == AVUser.getCurrentUser().objectId){
+            Intent(activity, PushActivity::class.java)
+        }else{
+            Intent(activity, PlayActivity::class.java)
+        }
+        val bundle = Bundle()
+        bundle.putParcelable(LCConfig.LIVE_TABLE, live)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 

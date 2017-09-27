@@ -32,12 +32,14 @@ import com.zhihu.matisse.engine.impl.GlideEngine;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.base.BaseRecyclerAdapter;
+import androidlab.edu.cn.nucyixue.data.bean.Reward;
 import androidlab.edu.cn.nucyixue.ui.common.camera.CameraActivity;
 import androidlab.edu.cn.nucyixue.utils.FileUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
@@ -224,27 +226,23 @@ public class XuanshangSendActivity extends BaseActivity {
         for (int i = 0; i < mStringList.size(); i++) {
             Log.i(TAG, "xuanshangSendClick: " + mStringList.get(i));
         }
-        AVObject mAVObject = new AVObject("Xuanshang");
-        mAVObject.put("description", mXuanshangEditShow.getText());
 
-        mAVObject.put("images", mStringList);
+        Reward reward = new Reward();
+        reward.setDes(mXuanshangEditShow.getText().toString());
+        reward.setImages(mStringList);
         final String[] mStrings;
         mStrings = mXuanshangSendTags.getText().toString().split("#");
-        mAVObject.put("tags", mStrings);
-        Log.i(TAG, "xuanshangSendClick: "+mStrings.length);
-        //如果有图片的话把第一张图片作为展示的封面
-        if ( mStringList.size() > 0 ){
-            mAVObject.put("firstImage", mStringList.get(0));
-        }
-        mAVObject.put("user", mAVUserFinal.getObjectId());
+        List<String> tags = new ArrayList<>();
+        for(String tag : mStrings)
+            tags.add(tag);
+        reward.setTags(tags);
+        reward.setUser(mAVUserFinal.getObjectId());
+        reward.setUsername(mAVUserFinal.getUsername());
         if (mXuanshangSendLocationText.getText() != null && !mXuanshangSendLocationText.getText().equals("")) {
-            mAVObject.put("loaction", mXuanshangSendLocationText.getText().toString());
+            reward.setLocation(mXuanshangSendLocationText.getText().toString());
         }
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        mAVObject.put("time", df.format(date));
-        mAVObject.put("money", mXuanshangSendMoneyEdit.getText().toString());
-        mAVObject.saveInBackground(new SaveCallback() {
+        reward.setMoney(mXuanshangSendMoneyEdit.getText().toString());
+        reward.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException mE) {
                 if (mE == null) {
@@ -293,5 +291,12 @@ public class XuanshangSendActivity extends BaseActivity {
                 mDialog.cancel();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mStringList.clear();
+        mFileList.clear();
     }
 }

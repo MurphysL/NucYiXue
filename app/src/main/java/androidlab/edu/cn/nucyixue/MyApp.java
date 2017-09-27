@@ -7,6 +7,7 @@ import com.avos.avoscloud.AVObject;
 
 import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
+import androidlab.edu.cn.nucyixue.data.bean.Reward;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
 import androidlab.edu.cn.nucyixue.utils.SensitiveFilter;
 import c.b.BP;
@@ -29,6 +30,7 @@ public class MyApp extends Application {
         AVObject.registerSubclass(Live.class);
         AVObject.registerSubclass(UserInfo.class);
         AVObject.registerSubclass(LU.class);
+        AVObject.registerSubclass(Reward.class);
 
         AVOSCloud.initialize(this,"O5aEuqARNjtbvT2tGTW23bB5-gzGzoHsz","XMaxhc0a9L5cDOIAXrBeqoS8");
 

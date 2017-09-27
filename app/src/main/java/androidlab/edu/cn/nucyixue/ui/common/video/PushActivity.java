@@ -13,6 +13,7 @@ import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -66,7 +67,6 @@ public class PushActivity extends AppCompatActivity {
     public void onMStartLiveClicked() {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
-            Log.i(TAG, "GET BUNDLE");
             Live live = bundle.getParcelable(LCConfig.getLIVE_TABLE());
             if(live != null){
                 Log.i(TAG, live.toString());
@@ -75,7 +75,11 @@ public class PushActivity extends AppCompatActivity {
                 Date date = live.getStartAt();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
                 //获取live开启时间
-                String time = format.format(date);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                calendar.add(Calendar.YEAR, 1);
+                String time = format.format(calendar.getTime());
+                Log.i(TAG, "time: " + time);
                 //获取推流地址
                 String rtmp = RtmpUtils.getSafeUrl(id, time);
                 Log.i(TAG, "onMStartLiveClicked: ");

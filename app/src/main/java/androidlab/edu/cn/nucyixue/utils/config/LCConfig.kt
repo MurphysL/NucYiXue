@@ -18,6 +18,8 @@ class LCConfig {
         val LU_TABLE : String = "LU" // Live - User 关联表
         @JvmStatic
         val UI_TABLE : String = "UserInfo"
+        @JvmStatic
+        val REWARD_TABLE : String = "Reward"
 
         @JvmStatic
         val USER_AVATAR : String = "avatar" // 用户头像
@@ -78,6 +80,29 @@ class LCConfig {
         val LIVE_SOUNDS_NEXT = "next"
         @JvmStatic
         val LIVE_SOUNDS_PREVIOUS = "previous"
+
+        @JvmStatic
+        val REWARD_DES = "description"
+        @JvmStatic
+        val REWARD_TAGS = "tags"
+        @JvmStatic
+        val REWARD_MONEY = "money"
+        //@JvmStatic
+        //val REWARD_COMMENT = "pinglun"
+        @JvmStatic
+        val REWARD_IMG = "images"
+        @JvmStatic
+        val REWARD_TIME = "time"
+        @JvmStatic
+        val REWARD_LOC = "location"
+        @JvmStatic
+        val REWARD_USER = "user"
+        @JvmStatic
+        val REWARD_IS_TRUE = "isTrue"
+        @JvmStatic
+        val REWARD_AVATAR = "avatar"
+        @JvmStatic
+        val REWARD_USER_NAME = "username"
 
     }
 }

@@ -3,6 +3,8 @@ package androidlab.edu.cn.nucyixue.net
 import android.util.Log
 import androidlab.edu.cn.nucyixue.data.bean.LU
 import androidlab.edu.cn.nucyixue.data.bean.Live
+import androidlab.edu.cn.nucyixue.data.bean.Reward
+import androidlab.edu.cn.nucyixue.data.bean.UserInfo
 import androidlab.edu.cn.nucyixue.utils.config.LCConfig
 import androidlab.edu.cn.nucyixue.utils.rx.RxSchedulerHelper
 import com.avos.avoscloud.*
@@ -41,6 +43,17 @@ object AVService{
                     })
                 }.compose(RxSchedulerHelper.io_main())
 
+    fun queryUserInfoByUserId(userId : String) : Observable<UserInfo>{
+        val query = AVQuery<UserInfo>(LCConfig.UI_TABLE)
+        query.whereEqualTo(LCConfig.UI_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, userId))
+        return queryAV(query)
+    }
+
+    fun queryAllReward() : Observable<Reward>{
+        val query : AVQuery<Reward> = AVQuery(LCConfig.REWARD_TABLE)
+        return queryAV(query)
+    }
+
     fun queryAllLive() : Observable<Live> {
         val query : AVQuery<Live> = AVQuery(LCConfig.LIVE_TABLE)
         query.addDescendingOrder(LCConfig.LIVE_START_AT) // 按时间排序
@@ -64,7 +77,7 @@ object AVService{
 
     fun queryCreatedLive(objectId: String) : Observable<Live>{
         val query : AVQuery<Live> = AVQuery(LCConfig.LIVE_TABLE)
-        query.whereEqualTo(LCConfig.LIVE_USER_ID, objectId)
+        query.whereEqualTo(LCConfig.LIVE_USER_ID, AVObject.createWithoutData(LCConfig.USER_TABLE, objectId))
         return queryAV(query)
     }
 

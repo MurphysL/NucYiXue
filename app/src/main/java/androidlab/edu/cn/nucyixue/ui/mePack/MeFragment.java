@@ -215,8 +215,8 @@ public class MeFragment extends BaseFragment {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object mO) throws Exception {
-                        //Intent mIntent = new Intent(getContext(), LoginActivity.class);
-                        //startActivity(mIntent);
+                        Intent mIntent = new Intent(getContext(), LoginActivity.class);
+                        startActivity(mIntent);
                     }
                 });
     }
