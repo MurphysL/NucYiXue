@@ -90,6 +90,7 @@ dependencies {
     compile 'cjt.library.wheel:camera:1.1.3'
     compile project(path: ':ocr_ui')
     compile project(':openCVLibrary320')
+    compile files('libs/libandroid_tensorflow_inference_java.jar')
 }
 repositories {
     mavenCentral()

@@ -31,8 +31,8 @@ public class TeachFragment extends BaseFragment {
     TabLayout mTeachMainTablayout;
     @BindView(R.id.teach_main_viewpager)
     ViewPager mTeachMainViewpager;
-    @BindView(R.id.toolbar_teach)
-    Toolbar mToolbarTeach;
+    /*@BindView(R.id.toolbar_teach)
+    Toolbar mToolbarTeach;*/
 
     private String[] mString = {"Live", "资源", "悬赏"};
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
@@ -43,14 +43,14 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void init(View mView, Bundle mSavedInstanceState) {
-        initToolbar();
+        //initToolbar();
     }
 
-    private void initToolbar() {
+  /*  private void initToolbar() {
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarTeach);
         setHasOptionsMenu(true); // 设置 Fragment 标题
-        mToolbarTeach.setTitle(getString(R.string.me_fragment_xuanshange));
-    }
+        mToolbarTeach.setTitle(getString(R.string.me_fragment_teach));
+    }*/
 
     @Override
     protected int getResourcesLayout() {

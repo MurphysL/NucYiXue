@@ -6,7 +6,7 @@
               android:orientation="vertical"
               tools:context="androidlab.edu.cn.nucyixue.ui.teachPack.TeachFragment">
 
-    <android.support.design.widget.AppBarLayout
+   <!-- <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
@@ -14,7 +14,7 @@
             app:titleTextColor="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
-           <!-- <TextView
+           &lt;!&ndash; <TextView
                 android:id="@+id/teach_frame_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -23,10 +23,10 @@
                 android:text="教学资源"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />-->
+                android:textStyle="bold" />&ndash;&gt;
 
         </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>-->
     <android.support.design.widget.TabLayout
         android:id="@+id/teach_main_tablayout"
         app:tabIndicatorColor="#43beb0"

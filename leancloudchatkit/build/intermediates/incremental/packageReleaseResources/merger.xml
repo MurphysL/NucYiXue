@@ -20,6 +20,11 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@drawable/lcim_chat_record_button_round_background</item>
+    </style><style name="LCIMAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">#3dbcae</item>
+        <item name="colorPrimaryDark">#3dbcae</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style><style name="LCIMDividerLine">
         <item name="android:background">@color/lcim_divider_line_color</item>
     </style><style name="LCIMTextAppearance.Large.Gray">
@@ -89,4 +94,4 @@
         <item name="android:text">@string/lcim_chat_bottom_record_layout_pressToRecord</item>
     </style><style name="LCIMTextAppearance.Normal.Bold">
         <item name="android:textStyle">bold</item>
-    </style><style name="LCIMActivity" parent="LCIMKitTheme"/></file></source><source path="H:\new\NucYiXue\leancloudchatkit\build\generated\res\rs\release"/><source path="H:\new\NucYiXue\leancloudchatkit\build\generated\res\resValues\release"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="H:\new\NucYiXue\leancloudchatkit\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="lcim_chat_play_button"><attr format="boolean" name="left"/></declare-styleable></configuration></mergedItems></merger>
+    </style><style name="LCIMActivity" parent="LCIMKitTheme"/></file><file name="comment_bg" path="H:\new\NucYiXue\leancloudchatkit\src\main\res\drawable\comment_bg.xml" qualifiers="" type="drawable"/></source><source path="H:\new\NucYiXue\leancloudchatkit\build\generated\res\rs\release"/><source path="H:\new\NucYiXue\leancloudchatkit\build\generated\res\resValues\release"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="H:\new\NucYiXue\leancloudchatkit\src\release\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="lcim_chat_play_button"><attr format="boolean" name="left"/></declare-styleable></configuration></mergedItems></merger>

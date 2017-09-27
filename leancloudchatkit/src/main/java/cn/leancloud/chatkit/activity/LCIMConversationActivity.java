@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import cn.leancloud.chatkit.utils.LCIMLogUtils;
 public class LCIMConversationActivity extends AppCompatActivity {
 
     protected LCIMConversationFragment conversationFragment;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,12 @@ public class LCIMConversationActivity extends AppCompatActivity {
         setContentView(R.layout.lcim_conversation_activity);
         conversationFragment = (LCIMConversationFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_chat);
         initByIntent(getIntent());
+
+        initView();
+    }
+
+    private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
     @Override
@@ -72,7 +80,9 @@ public class LCIMConversationActivity extends AppCompatActivity {
      * @param title
      */
     protected void initActionBar(String title) {
-        ActionBar actionBar = getSupportActionBar();
+        this.setSupportActionBar(toolbar);
+        toolbar.setTitle(title);
+        /*ActionBar actionBar = getSupportActionBar();
         if (null != actionBar) {
             if (null != title) {
                 actionBar.setTitle(title);
@@ -80,7 +90,7 @@ public class LCIMConversationActivity extends AppCompatActivity {
             actionBar.setDisplayUseLogoEnabled(false);
             actionBar.setDisplayHomeAsUpEnabled(true);
             finishActivity(RESULT_OK);
-        }
+        }*/
     }
 
     @Override

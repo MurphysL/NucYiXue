@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,11 +79,9 @@ public class FindFragment extends BaseFragment {
     @BindView(R.id.find_live_recycler)
     RecyclerView mFindLiveRecycler;
     @BindView(R.id.find_search_by_text)
-    LinearLayout mFindSearchByText;
+    RelativeLayout mFindSearchByText;
     @BindView(R.id.type_recycler)
     RecyclerView typeRecycler;
-    @BindView(R.id.find_search_by_erwerma)
-    ImageView findSearchByErwerma;
     @BindView(R.id.image_left1)
     ImageView imageLeft1;
     @BindView(R.id.image_left2)
@@ -322,11 +321,6 @@ public class FindFragment extends BaseFragment {
         return textView;
     }
 
-    @OnClick(R.id.find_search_by_erwerma)
-    public void onViewClicked() {
-        getActivity().startActivityForResult(new Intent(getActivity(), MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
-    }
-
     private void searchKeyword(Book book) {
         Log.i(TAG, "book : " + book.toString());
         List<Book.Tags> tags = book.getTags();
@@ -337,7 +331,7 @@ public class FindFragment extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.find_select_by_tiaojian)
+   /* @OnClick(R.id.find_select_by_tiaojian)
     public void onViewClickedOCR() {
         if(!checkTokenStatus()){
             return;
@@ -347,7 +341,7 @@ public class FindFragment extends BaseFragment {
         intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH, FileUtil.getSaveFile(getContext()).getAbsolutePath());
         intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL);
         getActivity().startActivityForResult(intent, REQUEST_CODE_GENERAL);
-    }
+    }*/
 
     private boolean checkTokenStatus() {
         if (!hasGotToken) {

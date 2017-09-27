@@ -10,52 +10,49 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize">
 
-        <LinearLayout
-            android:id="@+id/toolbar_find"
-            android:orientation="horizontal"
+        <RelativeLayout
+            android:id="@+id/find_search_by_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_back"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <ImageView
-                android:id="@+id/find_search_by_erwerma"
-                android:src="@drawable/erwerma"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
+                android:id="@+id/just_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/just_spilt"
+                android:src="@drawable/search"/>
 
-            <LinearLayout
-                android:id="@+id/find_search_by_text"
-                android:orientation="horizontal"
-                android:background="@drawable/shape_back"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:weightSum="1">
-                <ImageView
-                    android:layout_gravity="center"
-                    android:paddingLeft="10dp"
-                    android:src="@drawable/search"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"/>
-                <TextView
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="搜索感兴趣的内容"
-                    android:maxLines="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
             <ImageView
-                android:id="@+id/find_select_by_tiaojian"
-                android:src="@drawable/shaixuan"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
-        </LinearLayout>
+                android:id="@+id/just_spilt"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/just_spilt"
+                android:gravity="center"
+                android:text="搜索"/>
+        </RelativeLayout>
+
     </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

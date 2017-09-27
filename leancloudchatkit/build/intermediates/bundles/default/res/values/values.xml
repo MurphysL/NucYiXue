@@ -56,6 +56,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="LCIMAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#3dbcae</item>
+        <item name="colorPrimaryDark">#3dbcae</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
     <style name="LCIMAvatar">
         <item name="android:layout_width">45dp</item>
         <item name="android:layout_height">45dp</item>

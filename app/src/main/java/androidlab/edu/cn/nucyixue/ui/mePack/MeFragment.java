@@ -55,8 +55,8 @@ public class MeFragment extends BaseFragment {
 
     private static final String TAG = "MeFragment";
 
-    @BindView(R.id.toolbar_me)
-    Toolbar mToolbarMe;
+    /*@BindView(R.id.toolbar_me)
+    Toolbar mToolbarMe;*/
     /*    @BindView(R.id.toolbar_title)
         TextView mToolbarTitle;*/
     @BindView(R.id.me_name)
@@ -100,9 +100,9 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void init(View mView, Bundle mSavedInstanceState) {
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMe);
+       /* ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMe);
         setHasOptionsMenu(true); // 设置 Fragment 标题
-        mToolbarMe.setTitle(getString(R.string.me_fragment_title));
+        mToolbarMe.setTitle(getString(R.string.me_fragment_title));*/
     }
 
     @OnClick(R.id.me_image_avatar)

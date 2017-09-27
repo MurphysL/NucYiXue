@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
+    <style name="LCIMAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#3dbcae</item>
+        <item name="colorPrimaryDark">#3dbcae</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="LCIMKitTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/lcim_common_blue</item>
