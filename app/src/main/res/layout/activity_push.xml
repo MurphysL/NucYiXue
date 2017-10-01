@@ -8,37 +8,46 @@
     tools:context=".ui.common.video.PushActivity">
 
     <com.tencent.rtmp.ui.TXCloudVideoView
+        android:background="@drawable/masaike"
         android:id="@+id/push_live"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:visibility="visible"
-     />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
     <Button
+        android:layout_marginLeft="5dp"
+        android:background="@color/colorAccent"
         android:text="开始直播"
         android:id="@+id/start_live"
-        android:layout_below="@+id/push_live"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
     <Button
-        android:layout_toRightOf="@+id/start_live"
-        android:layout_below="@+id/push_live"
+        android:background="@color/colorAccent"
         android:text="结束直播"
         android:id="@+id/stop_live"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/start_live"/>
     <Button
-        android:layout_toRightOf="@+id/stop_live"
-        android:layout_below="@+id/push_live"
+        android:background="@color/colorAccent"
+
         android:text="改变摄像头"
         android:id="@+id/change"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/stop_live"/>
     <Button
+        android:background="@color/colorAccent"
         android:text="录制视频"
-        android:layout_below="@+id/push_live"
-        android:layout_toRightOf="@+id/change"
         android:id="@+id/luzhi_live"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/change"/>
 
 </RelativeLayout>

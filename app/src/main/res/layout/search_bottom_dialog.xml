@@ -6,6 +6,19 @@
               android:orientation="vertical">
 
     <TextView
+        android:id="@+id/search_handwriting_bottom_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_edit_black_24dp"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="手写识别"
+        android:textColor="#666666"
+        android:textSize="14sp"/>
+
+    <TextView
         android:id="@+id/search_camera_bottom_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -82,7 +82,7 @@ public class PushActivity extends AppCompatActivity {
                 Log.i(TAG, "time: " + time);
                 //获取推流地址
                 String rtmp = RtmpUtils.getSafeUrl(id, time);
-                Log.i(TAG, "onMStartLiveClicked: ");
+                Log.i(TAG, "onMStartLiveClicked: ="+rtmp);
                 //告诉 SDK 音视频流要推到哪个推流URL上去。
                 mLivePusher.startPusher(rtmp);
                 //界面元素和Pusher对象关联起来，从而能够将手机摄像头采集到的画面渲染到屏幕上。

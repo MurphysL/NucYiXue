@@ -102,7 +102,6 @@
         <activity android:name=".ui.mePack.MeMyActivity"/>
         <activity android:name=".ui.findPack.subject.SubjectContentActivity"/>
         <activity android:name=".ui.findPack.FindSearchActivity"/>
-        <activity android:name=".ui.findPack.FindMajorActivity"/>
         <activity android:name=".ui.teachPack.source.TeachSourceFileUpdataActivity"/>
         <activity android:name=".ui.common.live.CreateLiveActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.common.im.ConversationActivity" />
@@ -114,6 +113,7 @@
         <activity android:name=".ui.common.camera.CameraActivity"/>
         <activity android:name=".ui.teachPack.reward.XuanshangSendActivity"/>
         <activity android:name=".ui.teachPack.reward.XuanshangGetActivity"/>
+        <activity android:name=".IdentificationActivity"/>
 
         <service android:name=".service.LiveAudioService"/>
 

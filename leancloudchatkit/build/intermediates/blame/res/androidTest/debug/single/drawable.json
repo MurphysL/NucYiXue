@@ -60,6 +60,10 @@
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable\\lcim_chat_anim_voice_left.xml"
     },
     {
+        "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\comment_bg.xml",
+        "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable\\comment_bg.xml"
+    },
+    {
         "merged": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\lcim_chat_resend_bg.xml",
         "source": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\drawable\\lcim_chat_resend_bg.xml"
     },

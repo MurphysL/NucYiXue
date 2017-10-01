@@ -20,22 +20,38 @@ import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
+import androidlab.edu.cn.nucyixue.data.bean.Book;
+import androidlab.edu.cn.nucyixue.data.bean.Keyword;
+import androidlab.edu.cn.nucyixue.data.bean.OCRResult;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
+import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
+import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
+import androidlab.edu.cn.nucyixue.IdentificationActivity;
+import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
+import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
+import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class FindSearchActivity extends BaseActivity {
 
 
     private static final int SCANNIN_GREQUEST_CODE = 1;
     private static final int REQUEST_CODE_GENERAL = 105;
+    private static final int HANDWRITING_CODE = 110;
     private boolean hasGotToken = false;
 
     private static final String TAG = "FindSearchActivity";
@@ -74,6 +90,7 @@ public class FindSearchActivity extends BaseActivity {
 
         TextView mTextViewCamera = mBottom.findViewById(R.id.search_camera_bottom_select);
         TextView mTextViewSelect = mBottom.findViewById(R.id.search_qr_bottom_select);
+        TextView mTextViewHandwriting = mBottom.findViewById(R.id.search_handwriting_bottom_select);
         mDialog.setContentView(mBottom);
         ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) mBottom.getLayoutParams();
         params.width = getResources().getDisplayMetrics().widthPixels - FlexTextUtil.dp2px(mActivity, 16f);
@@ -96,7 +113,22 @@ public class FindSearchActivity extends BaseActivity {
                 mDialog.cancel();
             }
         });
+        mTextViewHandwriting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickStartHandwriting(view);
+                mDialog.cancel();
+            }
+        });
     }
+
+    private void onClickStartHandwriting(View view) {
+        Intent intent = new Intent(this, CameraActivity.class);
+        intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH, FileUtil.getSaveFile(this).getAbsolutePath());
+        intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL);
+        this.startActivityForResult(intent, HANDWRITING_CODE);
+    }
+
     private void onClickStartSelectQr(View mView) {
         this.startActivityForResult(new Intent(this, MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
     }
@@ -165,9 +197,110 @@ public class FindSearchActivity extends BaseActivity {
         textView.setLayoutParams(layoutParams);
         return textView;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i(TAG, requestCode + " " + resultCode);
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case REQUEST_CODE_GENERAL:
+                    RecognizeService.recGeneral(FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath(),
+                            new RecognizeService.ServiceListener() {
+                                @Override
+                                public void onResult(String result) {
+                                    Log.i(TAG, result);
+                                    OCRResult ocr = new Gson().fromJson(result, OCRResult.class);
+                                    List<OCRResult.WordsResult> wordsResult = ocr.getWords_result();
+                                    StringBuilder sb = new StringBuilder();
+                                    for (OCRResult.WordsResult word : wordsResult){
+                                        sb.append(word.getWords());
+                                    }
+
+                                    Service.INSTANCE.getApi_keyword()
+                                            .getKeyword(sb.toString(), 3)
+                                            .observeOn(Schedulers.io())
+                                            .subscribeOn(Schedulers.io())
+                                            .subscribe(
+                                                    new Consumer<Keyword>() {
+                                                        @Override
+                                                        public void accept(Keyword keyword) throws Exception {
+                                                            Log.i(TAG, "keys : " + keyword.getShowapi_res_body().getList().get(0));
+                                                            ArrayList<String> keys = new ArrayList<>();
+                                                            keys.addAll(keyword.getShowapi_res_body().getList());
+                                                            Bundle b = new Bundle();
+                                                            b.putSerializable("keys", keys);
+                                                            b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+                                                            LiveFragment fragment = new LiveFragment();
+                                                            fragment.setArguments(b);
+                                                            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_main);
+                                                        }
+                                                    },
+                                                    new Consumer<Throwable>() {
+                                                        @Override
+                                                        public void accept(Throwable throwable) throws Exception {
+                                                            Log.i(TAG, "Get Keyword error:" + throwable.toString());
+                                                        }
+                                                    }
+                                            );
+                                }
+                            });
+                    break;
+                case HANDWRITING_CODE:
+                    Intent intent = new Intent(FindSearchActivity.this, IdentificationActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("path", FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath());
+                    intent.putExtras(b);
+                    startActivity(intent);
+                case SCANNIN_GREQUEST_CODE:
+                    Bundle bundle = data.getExtras();
+                    String result = bundle.getString("result");
+                    if(bundle.getString("result") != null){
+                        Log.i(TAG, "result:" + result);
+                        Service.INSTANCE.getApi_douban().getBookInfo(result)
+                                .observeOn(Schedulers.io())
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(
+                                        new Consumer<Book>() {
+                                            @Override
+                                            public void accept(Book book) throws Exception {
+                                                searchKeyword(book);
+                                            }
+                                        },
+                                        new Consumer<Throwable>() {
+                                            @Override
+                                            public void accept(Throwable throwable) throws Exception {
+                                                Log.i(TAG, "get Book Fail :" + throwable.toString());
+                                            }
+                                        }
+                                );
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void searchKeyword(Book book){
+        Log.i(TAG, "book : " + book.toString());
+        List<Book.Tags> tags = book.getTags();
+        ArrayList<String> keys = new ArrayList<>();
+        for(Book.Tags tag : tags){
+            keys.add(tag.getName());
+            Log.i(TAG,"tag:"+ tag.getName());
+        }
+
+        Bundle b = new Bundle();
+        b.putSerializable("keys", keys);
+        b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+
+        Intent intent = new  Intent(this, TestActivity.class);
+        intent.putExtras(b);
+        startActivity(intent);
+
+       /* LiveFragment fragment = LiveFragment.getInstance();
+        fragment.setArguments(b);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content);*/
     }
 }

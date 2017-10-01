@@ -60,7 +60,7 @@ public class SubjectContentActivity extends BaseActivity {
     }
 
     private void initFragment() {
-        LiveFragment fragment = LiveFragment.getInstance();
+        LiveFragment fragment = new LiveFragment();
         Bundle bundle = new Bundle();
         bundle.putString("subject", subject);
         bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getSUBJECT());
@@ -77,7 +77,7 @@ public class SubjectContentActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.content_live:
-                LiveFragment fragment = LiveFragment.getInstance();
+                LiveFragment fragment = new LiveFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("subject", subject);
                 bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getSUBJECT());

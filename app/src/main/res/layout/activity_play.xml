@@ -8,35 +8,43 @@
     tools:context=".ui.common.video.PlayActivity">
 
     <com.tencent.rtmp.ui.TXCloudVideoView
+        android:background="@drawable/masaike"
         android:id="@+id/live_play"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:visibility="visible"/>
     <Button
-        android:layout_below="@id/live_play"
+        android:layout_marginLeft="5dp"
+        android:background="@color/colorAccent"
         android:text="销毁播放"
         android:id="@+id/stop_play"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
     <Button
-        android:layout_toRightOf="@id/stop_play"
-        android:layout_below="@+id/live_play"
+        android:background="@color/colorAccent"
         android:text="暂停播放"
         android:id="@+id/pause_stop"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/stop_play"/>
     <Button
+        android:background="@color/colorAccent"
+
         android:id="@+id/again_play"
         android:text="继续播放"
-        android:layout_toRightOf="@id/pause_stop"
-        android:layout_below="@+id/live_play"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/pause_stop"/>
     <Button
+        android:background="@color/colorAccent"
         android:text="硬件加速"
-        android:layout_below="@+id/live_play"
-        android:layout_toRightOf="@id/again_play"
         android:id="@+id/jiasu"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/again_play"
+        android:layout_alignTop="@+id/again_play"/>
 </RelativeLayout>

@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class RtmpUtils {
 
-    private static final String KEY = "";
+    private static final String KEY = "39a38ba5e27ed9a1805b3f0acbc6a795";
 
     private StringBuilder mStringBuilder = new StringBuilder();
 

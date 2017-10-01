@@ -32,17 +32,72 @@
             android:id="@+id/input_bar_btn_keyboard"
             style="@style/lcim_input_bar_button_style"
             android:src="@drawable/lcim_bottom_bar_keyboard_button_bg"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/input_bar_btn_send_text"
             style="@style/lcim_input_bar_button_style"
             android:src="@drawable/lcim_bottom_bar_send_button_bg"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/input_bar_btn_voice"
             style="@style/lcim_input_bar_button_style"
-            android:src="@drawable/lcim_bottom_bar_voice_button_bg"/>
+            android:src="@drawable/lcim_bottom_bar_voice_button_bg" />
     </FrameLayout>
 </LinearLayout>
+
+<!--
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_margin="8dp"
+    android:background="@drawable/comment_bg"
+    android:elevation="8dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical">
+    <FrameLayout
+        android:layout_toLeftOf="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="1">
+
+        <cn.leancloud.chatkit.view.LCIMRecordButton
+            android:id="@+id/input_bar_btn_record"
+            style="@style/lcim_input_bar_record_button_style"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/input_bar_et_content"
+            android:hint="Add your comment"
+            style="@style/lcim_input_bar_edittext_style"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <ImageButton
+            android:id="@+id/input_bar_btn_keyboard"
+            style="@style/lcim_input_bar_button_style"
+            android:src="@drawable/lcim_bottom_bar_keyboard_button_bg"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/input_bar_btn_send_text"
+            style="@style/lcim_input_bar_button_style"
+            android:src="@drawable/lcim_bottom_bar_send_button_bg"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/input_bar_btn_voice"
+            style="@style/lcim_input_bar_button_style"
+            android:src="@drawable/lcim_bottom_bar_voice_button_bg" />
+    </FrameLayout>
+</RelativeLayout>-->

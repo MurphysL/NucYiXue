@@ -50,12 +50,12 @@ class LiveFragment : Fragment(){
     private lateinit var adapter : AnimCommonAdapter<Live>
     private var user : AVUser? = null
 
-    companion object {
+    /*companion object {
         @JvmStatic
         val instance : LiveFragment by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             LiveFragment()
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,6 +141,7 @@ class LiveFragment : Fragment(){
                                         if(lu.comment == null && lu.star == 0){ // 未评价
                                             enterComment(t, lu)
                                         }else{
+                                            Log.i(TAG, t.isText)
                                             if(t.isText == LCConfig.LIVE_TEXT) enterLive(t) else enterVideo(t)
                                         }
                                     },
@@ -234,9 +235,9 @@ class LiveFragment : Fragment(){
      * 获取推荐 Live
      */
     private fun fetchRecommendLive() {
-        val keys = arguments.get("keys") as List<String>
-        keys.let {
-            AVService.queryRecommendLive(it).subscribe(
+        val keys = arguments.get("keys") as List<String>?
+        if(keys != null && !keys.isEmpty()){
+            AVService.queryRecommendLive(keys).subscribe(
                     {
                         onNext ->
                         list += onNext
@@ -251,6 +252,8 @@ class LiveFragment : Fragment(){
                         Log.i(TAG, "onComplete")
                     }
             )
+        }else{
+            fetchCommonLive()
         }
     }
 

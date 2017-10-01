@@ -235,7 +235,7 @@ public class MeFragment extends BaseFragment {
 
     @OnClick(R.id.live_layout)
     public void onLiveClicked() {
-        LiveFragment fragment = LiveFragment.getInstance();
+        LiveFragment fragment = new LiveFragment();
         Bundle bundle = new Bundle();
         bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getJOINED());
         fragment.setArguments(bundle);
@@ -244,7 +244,7 @@ public class MeFragment extends BaseFragment {
 
     @OnClick(R.id.speaker_layout)
     public void onSpeakerClicked() {
-        LiveFragment fragment = LiveFragment.getInstance();
+        LiveFragment fragment = new LiveFragment();
         Bundle bundle = new Bundle();
         bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getCREATED());
         fragment.setArguments(bundle);

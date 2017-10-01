@@ -4,58 +4,34 @@ package androidlab.edu.cn.nucyixue.ui.findPack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.FindCallback;
-import com.baidu.ocr.sdk.OCR;
-import com.baidu.ocr.sdk.OnResultListener;
-import com.baidu.ocr.sdk.exception.OCRError;
-import com.baidu.ocr.sdk.model.AccessToken;
-import com.baidu.ocr.ui.camera.CameraActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
-import com.squareup.picasso.Picasso;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidlab.edu.cn.nucyixue.R;
-import androidlab.edu.cn.nucyixue.base.AnimCommonAdapter;
 import androidlab.edu.cn.nucyixue.base.BaseFragment;
-import androidlab.edu.cn.nucyixue.data.bean.Book;
-import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.Subject;
 import androidlab.edu.cn.nucyixue.net.AVService;
-import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
-import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
-import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
-import androidlab.edu.cn.nucyixue.utils.config.LCConfig;
 import androidlab.edu.cn.nucyixue.utils.config.LiveFragmentType;
 import androidlab.edu.cn.nucyixue.utils.config.LiveType;
 import butterknife.BindView;
@@ -64,8 +40,9 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 import io.reactivex.functions.Consumer;
 
 /**
- * 待重构
- * 滑动冲突？
+ * FindFragment
+ *
+ * Update on 2017.10.1
  *
  * A simple {@link Fragment} subclass.
  */
@@ -76,8 +53,6 @@ public class FindFragment extends BaseFragment {
     BGABanner mBannerGuideContent;
     @BindView(R.id.flexsubject)
     FlexboxLayout mFlexSubject;
-    @BindView(R.id.find_live_recycler)
-    RecyclerView mFindLiveRecycler;
     @BindView(R.id.find_search_by_text)
     RelativeLayout mFindSearchByText;
     @BindView(R.id.type_recycler)
@@ -87,14 +62,7 @@ public class FindFragment extends BaseFragment {
     @BindView(R.id.image_left2)
     ImageView imageLeft2;
 
-    private static final int DISPLAY_NUM = 7;
-    private static final int SCANNIN_GREQUEST_CODE = 1;
-    private static final int REQUEST_CODE_GENERAL = 105;
-
-    private boolean hasGotToken = false;
-
-    private AnimCommonAdapter<Live> adapter;
-    private List<Live> list = new ArrayList<>();
+    private int keywordDisplayNum = 0;
 
 
     public static FindFragment getInstance() {
@@ -102,25 +70,34 @@ public class FindFragment extends BaseFragment {
     }
 
     @Override
+    protected int getResourcesLayout() {
+        return R.layout.fragment_find;
+    }
+
+
+    @Override
     protected void init(View mView, Bundle mSavedInstanceState) {
-        mBannerGuideContent.setAdapter(new BGABanner.Adapter<ImageView, Integer>() {
-            @Override
-            public void fillBannerItem(BGABanner banner, ImageView itemView, Integer model, int position) {
-                Glide.with(getContext())
-                        .load(model)
-                        .placeholder(R.drawable.hold)
-                        .error(R.drawable.hold)
-                        .centerCrop()
-                        .dontAnimate()
-                        .into(itemView);
-            }
+        initBanner();
 
-        });
+        initRecyclerView();
 
+        initFragment();
+    }
+
+    private void initFragment() {
+        Fragment fragment = new LiveFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getHOT());
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.add(R.id.content_find, fragment).commit();
+    }
+
+    private void initRecyclerView() {
         List<LiveType> types = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++)
             types.add(LiveType.toList().get(i));
-        }
+
 
         CommonAdapter<LiveType> adapter = new CommonAdapter<LiveType>(getContext(), R.layout.item_type, types) {
             @Override
@@ -139,137 +116,26 @@ public class FindFragment extends BaseFragment {
                 });
             }
         };
+
         typeRecycler.setAdapter(adapter);
         typeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 5));
-
-        initAccessTokenWithAkSk();
     }
 
-    @OnClick(R.id.find_search_by_text)
-    public void search() {
-        Intent mIntent = new Intent(getContext(), FindSearchActivity.class);
-        startActivity(mIntent);
-    }
-
-    @Override
-    protected int getResourcesLayout() {
-        return R.layout.fragment_find;
-    }
-
-    @Override
-    protected void logic() {
-        displayBanner();
-        AVQuery<Live> query = new AVQuery(LCConfig.getLIVE_TABLE());
-        query.selectKeys(Arrays.asList(LCConfig.getLIVE_KEYWORD()));
-        query.findInBackground(new FindCallback<Live>() {
+    private void initBanner() {
+        mBannerGuideContent.setAdapter(new BGABanner.Adapter<ImageView, Integer>() {
             @Override
-            public void done(List<Live> list, AVException e) {
-                if (e != null) {
-                    Log.i(TAG, "获取标签为空:" + e);
-                } else {
-                    if (!list.isEmpty()) {
-                        HashMap<String, Integer> map = new HashMap<>();
-                        for (Live live : list) {
-                            if (live.getKeyword() == null)
-                                continue;
-                            Log.i(TAG, live.getKeyword().get(0));
-                            for (String keyword : live.getKeyword()) {
-                                if (map.containsKey(keyword)) {
-                                    int times = map.get(keyword);
-                                    map.put(keyword, times + 1);
-                                } else {
-                                    map.put(keyword, 1);
-                                }
-                            }
-                        }
-
-                        List<Map.Entry<String, Integer>> l = new ArrayList<>(map.entrySet());
-                        Collections.sort(l, new Comparator<Map.Entry<String, Integer>>() {
-                            @Override
-                            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> t1) {
-                                return o1.getValue().compareTo(t1.getValue()) > 0 ? -1 : 1;
-                            }
-                        });
-
-                        for (Map.Entry<String, Integer> mapping : l) {
-                            System.out.println(mapping.getKey() + ":" + mapping.getValue());
-                        }
-
-                        displayFlexSubject(l);
-                    } else {
-                        Log.i(TAG, "获取标签为空");
-                    }
-                }
+            public void fillBannerItem(BGABanner banner, ImageView itemView, Integer model, int position) {
+                Glide.with(getContext())
+                        .load(model)
+                        .placeholder(R.drawable.hold)
+                        .error(R.drawable.hold)
+                        .centerCrop()
+                        .dontAnimate()
+                        .into(itemView);
             }
+
         });
 
-        initRecyclerView();
-        fetchData();
-    }
-
-    private void fetchData() {
-        AVService.INSTANCE.queryHotLive().subscribe(new Consumer<Live>() {
-            @Override
-            public void accept(Live live) throws Exception {
-                list.add(live);
-                adapter.notifyDataSetChanged();
-            }
-        }, new Consumer<Throwable>() {
-            @Override
-            public void accept(Throwable throwable) throws Exception {
-                Log.i(TAG, throwable.toString());
-            }
-        });
-    }
-
-    private void initRecyclerView() {
-        mFindLiveRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new AnimCommonAdapter<Live>(getContext(), R.layout.item_live, list) {
-            @Override
-            protected void convert(ViewHolder holder, final Live live, int position) {
-                if(live != null){
-                    holder.setText(R.id.live_name, live.getName());
-                    holder.setText(R.id.live_type, live.getType());
-                    holder.setRating(R.id.live_star, live.getStar());
-                    holder.setText(R.id.live_join_num, live.getNum() + "");
-                    holder.setText(R.id.live_speaker, live.getUsername());
-                    Picasso.with(getContext())
-                            .load(live.getPic())
-                            .into((ImageView) holder.getView(R.id.live_pic));
-                    holder.setOnClickListener(R.id.live_info, new View.OnClickListener(){
-                        @Override
-                        public void onClick(View view) {
-                            AVUser user = AVUser.getCurrentUser();
-                            if(user != null){
-                                AVService.INSTANCE.queryJoinedByLUId(live.getObjectId(), user.getObjectId())
-                                        .subscribe(
-                                                new Consumer<LU>() {
-                                                    @Override
-                                                    public void accept(LU lu) throws Exception {
-                                                       /* if(lu.getComment() == null && lu.getStar() == 0){ // 未评价
-                                                            enterComment(t, lu)
-                                                        }else{
-                                                            if(t.isText == LCConfig.LIVE_TEXT) enterLive(t) else enterVideo(t)
-                                                        }*/
-                                                    }
-                                                },
-                                                new Consumer<Throwable>() {
-                                                    @Override
-                                                    public void accept(Throwable throwable) throws Exception {
-
-                                                    }
-                                                }
-                                        );
-                            }
-                        }
-                    });
-                }
-            }
-        };
-        mFindLiveRecycler.setAdapter(adapter);
-    }
-
-    private void displayBanner() {
         mBannerGuideContent.setData(Arrays.asList(R.drawable.live, R.drawable.xuanshang, R.drawable.xianxia), Arrays.asList("", "", ""));
         mBannerGuideContent.setDelegate(new BGABanner.Delegate() {
             @Override
@@ -279,13 +145,43 @@ public class FindFragment extends BaseFragment {
         });
     }
 
-    private void displayFlexSubject(List<Map.Entry<String, Integer>> mapping) {
-        for (int i = 0; i < DISPLAY_NUM; i++) {
-            Subject model = new Subject();
-            model.setId(i);
-            model.setName(mapping.get(i).getKey());
-            mFlexSubject.addView(createNewFlexItemTextView(model));
-        }
+
+    @Override
+    protected void logic() {
+        fetchKeywordData();
+    }
+
+    private void fetchKeywordData() {
+        AVService.INSTANCE.queryKeywordsLive().subscribe(
+                new Consumer<Live>() {
+                    @Override
+                    public void accept(Live live) throws Exception {
+                        List<String> list = live.getKeyword();
+                        if(keywordDisplayNum <= 10 && list != null && !list.isEmpty()){
+                            displayFlexSubject(live.getKeyword());
+                            keywordDisplayNum += list.size();
+                        }
+                    }
+                },
+                new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i(TAG, "GET KEYWORD ERROR : " + throwable.toString());
+                        toast("GET KEYWORD ERROR !");
+                    }
+                }
+        );
+    }
+
+
+    private void displayFlexSubject(List<String> keywords) {
+        if(mFlexSubject != null)
+            for (int i = 0; i < keywords.size(); i++) {
+                Subject model = new Subject();
+                model.setId(i);
+                model.setName(keywords.get(i));
+                mFlexSubject.addView(createNewFlexItemTextView(model));
+            }
     }
 
     private TextView createNewFlexItemTextView(final Subject book) {
@@ -321,56 +217,12 @@ public class FindFragment extends BaseFragment {
         return textView;
     }
 
-    private void searchKeyword(Book book) {
-        Log.i(TAG, "book : " + book.toString());
-        List<Book.Tags> tags = book.getTags();
-        List<String> names = new ArrayList<>();
-        for (Book.Tags tag : tags) {
-            names.add(tag.getName());
-            Log.i(TAG, "tag:" + tag.getName());
-        }
+    @OnClick(R.id.find_search_by_text)
+    public void search() {
+        Intent mIntent = new Intent(getContext(), FindSearchActivity.class);
+        startActivity(mIntent);
     }
 
-   /* @OnClick(R.id.find_select_by_tiaojian)
-    public void onViewClickedOCR() {
-        if(!checkTokenStatus()){
-            return;
-        }
-
-        Intent intent = new Intent(getActivity(), CameraActivity.class);
-        intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH, FileUtil.getSaveFile(getContext()).getAbsolutePath());
-        intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL);
-        getActivity().startActivityForResult(intent, REQUEST_CODE_GENERAL);
-    }*/
-
-    private boolean checkTokenStatus() {
-        if (!hasGotToken) {
-            Toast.makeText(getContext(), "token还未成功获取", Toast.LENGTH_LONG).show();
-        }
-        return hasGotToken;
-    }
-
-    private void initAccessTokenWithAkSk() {
-        OCR.getInstance().initAccessTokenWithAkSk(new OnResultListener<AccessToken>() {
-            @Override
-            public void onResult(AccessToken result) {
-                String token = result.getAccessToken();
-                hasGotToken = true;
-            }
-
-            @Override
-            public void onError(OCRError error) {
-                error.printStackTrace();
-                Log.i(TAG, "AK，SK方式获取token失败"+error.getMessage());
-            }
-        }, getContext(), "AL2QSX22moztT8ir6GsW0cc6", "agAiIP7f4ydgSkpGa92fycEGSe742TG0");
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.i(TAG, requestCode + " " + resultCode);
-    }
 }
 
 

@@ -42,10 +42,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void logic();
 
-    public void toast(String toast,int time){
-        if (time == 0){
-            Toast.makeText(getActivity(), toast, Toast.LENGTH_SHORT).show();
-        }
+    public void toast(String toast){
         Toast.makeText(getActivity(), toast, Toast.LENGTH_SHORT).show();
     }
 

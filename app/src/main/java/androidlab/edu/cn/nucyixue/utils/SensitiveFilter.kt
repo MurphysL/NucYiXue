@@ -57,7 +57,7 @@ class SensitiveFilter{
                     node = root
                 } else if (node.end) {
                     // 发现敏感词， 从begin到position的位置用replacement替换掉
-                    result.append("■■")
+                    result.append("■■■")
                     position += 1
                     begin = position
                     node = root

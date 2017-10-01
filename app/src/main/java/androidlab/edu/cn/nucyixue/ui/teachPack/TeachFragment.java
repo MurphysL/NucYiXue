@@ -59,7 +59,7 @@ public class TeachFragment extends BaseFragment {
 
     @Override
     protected void logic() {
-        LiveFragment mLive = LiveFragment.getInstance();
+        LiveFragment mLive = new LiveFragment();
         Bundle bundle = new Bundle();
         bundle.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getCOMMON());
         mLive.setArguments(bundle);

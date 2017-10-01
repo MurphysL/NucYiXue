@@ -116,4 +116,10 @@ object AVService{
         query.limit = 10
         return queryAV(query)
     }
+
+    fun queryKeywordsLive() : Observable<Live>{
+        val query : AVQuery<Live> = AVQuery(LCConfig.LIVE_TABLE)
+        query.selectKeys(Arrays.asList(LCConfig.LIVE_KEYWORD))
+        return queryAV(query)
+    }
 }
