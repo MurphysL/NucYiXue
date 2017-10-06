@@ -3,13 +3,12 @@ package androidlab.edu.cn.nucyixue.ui.findPack;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewCompat;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
-import com.google.android.flexbox.FlexboxLayout;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -30,13 +28,11 @@ import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.data.bean.Book;
 import androidlab.edu.cn.nucyixue.data.bean.Keyword;
 import androidlab.edu.cn.nucyixue.data.bean.OCRResult;
-import androidlab.edu.cn.nucyixue.data.bean.Subject;
 import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
 import androidlab.edu.cn.nucyixue.IdentificationActivity;
 import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
-import androidlab.edu.cn.nucyixue.ui.findPack.subject.SubjectContentActivity;
 import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
 import androidlab.edu.cn.nucyixue.utils.FlexTextUtil;
@@ -47,40 +43,26 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class FindSearchActivity extends BaseActivity {
-
+    private static final String TAG = "FindSearchActivity";
 
     private static final int SCANNIN_GREQUEST_CODE = 1;
     private static final int REQUEST_CODE_GENERAL = 105;
     private static final int HANDWRITING_CODE = 110;
     private boolean hasGotToken = false;
 
-    private static final String TAG = "FindSearchActivity";
-    @BindView(R.id.search_edit)
-    EditText mSearchEdit;
+
     @BindView(R.id.camera_search)
     ImageView mCameraSearch;
-    @BindView(R.id.flexsubject_search)
-    FlexboxLayout mFlexsubjectSearch;
 
     @Override
     protected void logicActivity(Bundle mSavedInstanceState) {
-
         initAccessTokenWithAkSk();
-        String[] tags = {"Java程序设计", "计算机网络", "英语", "高等数学", "线性代数", "离散数学", "大学计算机基础"};
-        for (int i = 0; i < tags.length; i++) {
-            Subject model = new Subject();
-            model.setId(i);
-            model.setName(tags[i]);
-            mFlexsubjectSearch.addView(createNewFlexItemTextView(model));
-        }
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_find_search;
     }
-
-
 
     @OnClick(R.id.camera_search)
     public void onViewClicked() {
@@ -132,6 +114,7 @@ public class FindSearchActivity extends BaseActivity {
     private void onClickStartSelectQr(View mView) {
         this.startActivityForResult(new Intent(this, MipcaActivityCapture.class), SCANNIN_GREQUEST_CODE);
     }
+
     private void onClickStartCamera(View mView) {
         if(!checkTokenStatus()){
             return;
@@ -143,6 +126,7 @@ public class FindSearchActivity extends BaseActivity {
         this.startActivityForResult(intent, REQUEST_CODE_GENERAL);
 
     }
+
     private boolean checkTokenStatus() {
         if (!hasGotToken) {
             Toast.makeText(this, "token还未成功获取", Toast.LENGTH_LONG).show();
@@ -165,121 +149,102 @@ public class FindSearchActivity extends BaseActivity {
             }
         },this, "AL2QSX22moztT8ir6GsW0cc6", "agAiIP7f4ydgSkpGa92fycEGSe742TG0");
     }
-    private TextView createNewFlexItemTextView(final Subject book) {
-        TextView textView = new TextView(this);
-        textView.setGravity(Gravity.CENTER);
-        textView.setText(book.getName());
-        textView.setTextSize(15);
-        textView.setTextColor(getResources().getColor(R.color.colorPrimary));
-        textView.setBackgroundResource(R.drawable.shape_back);
-        textView.setTag(book.getId());
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e(TAG, book.getName());
-                Bundle mBundle = new Bundle();
-                mBundle.putString("subjectName",book.getName());
-                mBundle.putInt("subjectId",book.getId());
-                Intent mIntent = new Intent(FindSearchActivity.this, SubjectContentActivity.class);
-                mIntent.putExtras(mBundle);
-                startActivity(mIntent);
-            }
-        });
-        int padding = FlexTextUtil.dpToPixel(this, 3);
-        int paddingLeftAndRight = FlexTextUtil.dpToPixel(this, 4);
-        ViewCompat.setPaddingRelative(textView, paddingLeftAndRight + 4, padding, paddingLeftAndRight + 4, padding);
-        FlexboxLayout.LayoutParams layoutParams = new FlexboxLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        int margin = FlexTextUtil.dpToPixel(this, 4);
-        int marginTop = FlexTextUtil.dpToPixel(this, 8);
-        layoutParams.setMargins(margin + 10, marginTop, margin, 0);
-        textView.setLayoutParams(layoutParams);
-        return textView;
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i(TAG, requestCode + " " + resultCode);
+
         if(resultCode == RESULT_OK){
             switch (requestCode){
                 case REQUEST_CODE_GENERAL:
-                    RecognizeService.recGeneral(FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath(),
-                            new RecognizeService.ServiceListener() {
-                                @Override
-                                public void onResult(String result) {
-                                    Log.i(TAG, result);
-                                    OCRResult ocr = new Gson().fromJson(result, OCRResult.class);
-                                    List<OCRResult.WordsResult> wordsResult = ocr.getWords_result();
-                                    StringBuilder sb = new StringBuilder();
-                                    for (OCRResult.WordsResult word : wordsResult){
-                                        sb.append(word.getWords());
-                                    }
-
-                                    Service.INSTANCE.getApi_keyword()
-                                            .getKeyword(sb.toString(), 3)
-                                            .observeOn(Schedulers.io())
-                                            .subscribeOn(Schedulers.io())
-                                            .subscribe(
-                                                    new Consumer<Keyword>() {
-                                                        @Override
-                                                        public void accept(Keyword keyword) throws Exception {
-                                                            Log.i(TAG, "keys : " + keyword.getShowapi_res_body().getList().get(0));
-                                                            ArrayList<String> keys = new ArrayList<>();
-                                                            keys.addAll(keyword.getShowapi_res_body().getList());
-                                                            Bundle b = new Bundle();
-                                                            b.putSerializable("keys", keys);
-                                                            b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
-                                                            LiveFragment fragment = new LiveFragment();
-                                                            fragment.setArguments(b);
-                                                            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_main);
-                                                        }
-                                                    },
-                                                    new Consumer<Throwable>() {
-                                                        @Override
-                                                        public void accept(Throwable throwable) throws Exception {
-                                                            Log.i(TAG, "Get Keyword error:" + throwable.toString());
-                                                        }
-                                                    }
-                                            );
-                                }
-                            });
+                    fetchOCRData();
                     break;
                 case HANDWRITING_CODE:
-                    Intent intent = new Intent(FindSearchActivity.this, IdentificationActivity.class);
-                    Bundle b = new Bundle();
-                    b.putString("path", FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath());
-                    intent.putExtras(b);
-                    startActivity(intent);
+                    fetchHandWritingData();
+                    break;
                 case SCANNIN_GREQUEST_CODE:
-                    Bundle bundle = data.getExtras();
-                    String result = bundle.getString("result");
-                    if(bundle.getString("result") != null){
-                        Log.i(TAG, "result:" + result);
-                        Service.INSTANCE.getApi_douban().getBookInfo(result)
-                                .observeOn(Schedulers.io())
-                                .subscribeOn(Schedulers.io())
-                                .subscribe(
-                                        new Consumer<Book>() {
-                                            @Override
-                                            public void accept(Book book) throws Exception {
-                                                searchKeyword(book);
-                                            }
-                                        },
-                                        new Consumer<Throwable>() {
-                                            @Override
-                                            public void accept(Throwable throwable) throws Exception {
-                                                Log.i(TAG, "get Book Fail :" + throwable.toString());
-                                            }
-                                        }
-                                );
-                    }
+                    fetchQRData(data);
                     break;
                 default:
                     break;
             }
         }
+    }
+
+    private void fetchQRData(Intent data) {
+        Bundle bundle = data.getExtras();
+        String result = bundle.getString("result");
+        if(bundle.getString("result") != null){
+            Log.i(TAG, "result:" + result);
+            Service.INSTANCE.getApi_douban().getBookInfo(result)
+                    .observeOn(Schedulers.io())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(
+                            new Consumer<Book>() {
+                                @Override
+                                public void accept(Book book) throws Exception {
+                                    searchKeyword(book);
+                                }
+                            },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.i(TAG, "get Book Fail :" + throwable.toString());
+                                }
+                            }
+                    );
+        }
+    }
+
+    private void fetchHandWritingData() {
+        Intent intent = new Intent(FindSearchActivity.this, IdentificationActivity.class);
+        Bundle b = new Bundle();
+        b.putString("path", FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath());
+        intent.putExtras(b);
+        startActivity(intent);
+    }
+
+    private void fetchOCRData() {
+        RecognizeService.recGeneral(FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath(),
+                new RecognizeService.ServiceListener() {
+                    @Override
+                    public void onResult(String result) {
+                        Log.i(TAG, result);
+                        OCRResult ocr = new Gson().fromJson(result, OCRResult.class);
+                        List<OCRResult.WordsResult> wordsResult = ocr.getWords_result();
+                        StringBuilder sb = new StringBuilder();
+                        for (OCRResult.WordsResult word : wordsResult){
+                            sb.append(word.getWords());
+                        }
+
+                        Service.INSTANCE.getApi_keyword()
+                                .getKeyword(sb.toString(), 3)
+                                .observeOn(Schedulers.io())
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(
+                                        new Consumer<Keyword>() {
+                                            @Override
+                                            public void accept(Keyword keyword) throws Exception {
+                                                Log.i(TAG, "keys : " + keyword.getShowapi_res_body().getList().get(0));
+                                                ArrayList<String> keys = new ArrayList<>();
+                                                keys.addAll(keyword.getShowapi_res_body().getList());
+                                                Bundle b = new Bundle();
+                                                b.putSerializable("keys", keys);
+                                                b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
+                                                LiveFragment fragment = new LiveFragment();
+                                                fragment.setArguments(b);
+                                                ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content_search);
+                                            }
+                                        },
+                                        new Consumer<Throwable>() {
+                                            @Override
+                                            public void accept(Throwable throwable) throws Exception {
+                                                Log.i(TAG, "Get Keyword error:" + throwable.toString());
+                                            }
+                                        }
+                                );
+                    }
+                });
     }
 
     private void searchKeyword(Book book){
@@ -291,16 +256,12 @@ public class FindSearchActivity extends BaseActivity {
             Log.i(TAG,"tag:"+ tag.getName());
         }
 
+        Fragment fragment = new LiveFragment();
         Bundle b = new Bundle();
         b.putSerializable("keys", keys);
         b.putString(LiveFragmentType.getLIVE_FRAGMENT_TYPE(), LiveFragmentType.getRECOMMEND());
-
-        Intent intent = new  Intent(this, TestActivity.class);
-        intent.putExtras(b);
-        startActivity(intent);
-
-       /* LiveFragment fragment = LiveFragment.getInstance();
         fragment.setArguments(b);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.content);*/
+
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.camera_search);
     }
 }

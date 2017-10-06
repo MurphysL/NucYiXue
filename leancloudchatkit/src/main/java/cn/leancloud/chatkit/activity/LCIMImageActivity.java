@@ -31,6 +31,5 @@ public class LCIMImageActivity extends AppCompatActivity {
         } else {
             Picasso.with(this).load(new File(path)).into(imageView);
         }
-
     }
 }

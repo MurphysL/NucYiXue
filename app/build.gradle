@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
     compileSdkVersion 26
@@ -100,6 +101,8 @@ dependencies {
     compile project(path: ':ocr_ui')
     compile project(':openCVLibrary320')
     compile files('libs/libandroid_tensorflow_inference_java.jar')
+    compile 'com.android.support:multidex:1.0.1'
+
 }
 repositories {
     mavenCentral()

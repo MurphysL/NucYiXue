@@ -107,8 +107,8 @@
         <activity android:name=".ui.common.im.ConversationActivity" />
         <activity android:name=".ui.common.live.LiveCommentActivity" android:theme="@style/DetailsTheme" />
         <activity android:name=".ui.findPack.zxing.MipcaActivityCapture"/>
-        <activity android:name=".ui.common.video.PushActivity"/>
-        <activity android:name=".ui.common.video.PlayActivity"/>
+        <activity android:name=".ui.common.video.PushActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".ui.common.video.PlayActivity" android:screenOrientation="landscape"/>
         <activity android:name=".ui.common.live.LiveDetailActivity"/>
         <activity android:name=".ui.common.camera.CameraActivity"/>
         <activity android:name=".ui.teachPack.reward.XuanshangSendActivity"/>

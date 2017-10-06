@@ -1,6 +1,10 @@
 package androidlab.edu.cn.nucyixue;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.media.projection.MediaProjectionManager;
+import android.support.multidex.MultiDex;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
@@ -23,6 +27,10 @@ public class MyApp extends Application {
 
     public static final SensitiveFilter filter = new SensitiveFilter();
 
+    Intent intent;
+    int resultCode;
+    private MediaProjectionManager mMediaProjectionManager;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -42,4 +50,35 @@ public class MyApp extends Application {
 
         BP.init("e9aba613dc365a00e3508de5fbf105a7");
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+    public MediaProjectionManager getMediaProjectionManager() {
+        return mMediaProjectionManager;
+    }
+
+    public void setMediaProjectionManager(MediaProjectionManager mMediaProjectionManager) {
+        this.mMediaProjectionManager = mMediaProjectionManager;
+    }
+
+    public int getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(int resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public Intent getIntent() {
+        return intent;
+    }
+
+    public void setIntent(Intent intent) {
+        this.intent = intent;
+    }
+
 }

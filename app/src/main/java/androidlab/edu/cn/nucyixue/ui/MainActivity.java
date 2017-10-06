@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
+
 import androidlab.edu.cn.nucyixue.R;
 import androidlab.edu.cn.nucyixue.base.BaseActivity;
 import androidlab.edu.cn.nucyixue.ui.findPack.FindFragment;
-import androidlab.edu.cn.nucyixue.ui.map.TeachMapFragment;
+import androidlab.edu.cn.nucyixue.ui.mapPack.TeachMapFragment;
 import androidlab.edu.cn.nucyixue.ui.mePack.MeFragment;
 import androidlab.edu.cn.nucyixue.ui.teachPack.TeachFragment;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
@@ -48,7 +49,6 @@ public class MainActivity extends BaseActivity {
                 return true;
             }
         });
-
     }
 
     @Override

@@ -290,7 +290,7 @@ class CreateLiveActivity : AppCompatActivity(){
                     live.type = live_type
                     live.pic = file.url
                     live.keyword = keyword
-                    live.isText = LCConfig.LIVE_IS_TEXT
+                    live.isText = LCConfig.LIVE_TEXT
 
                     live.saveInBackground(object : SaveCallback(){
                         override fun done(p0: AVException?) {

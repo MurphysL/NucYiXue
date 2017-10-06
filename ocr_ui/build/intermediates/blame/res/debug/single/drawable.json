@@ -1,11 +1,11 @@
 [
     {
-        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_textfield_search_material.xml"
-    },
-    {
         "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
@@ -24,16 +24,16 @@
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\notification_bg_low.xml"
     },
     {
-        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\notification_icon_background.xml"
+        "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\3e89acfefdaaeb1af6f6a2d02fdddb360988d8ff\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",

@@ -49,7 +49,7 @@ class LiveCommentActivity : AppCompatActivity() {
 
         skip.setOnClickListener {
             Log.i(TAG, live.isText)
-            if(live.isText == "isText"){ // 需要修改
+            if(live.isText == LCConfig.LIVE_TEXT){ // 需要修改
                 enterLive(live)
             }else{
                 enterVideo(live)

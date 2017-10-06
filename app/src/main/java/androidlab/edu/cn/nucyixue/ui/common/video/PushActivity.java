@@ -1,13 +1,12 @@
 package androidlab.edu.cn.nucyixue.ui.common.video;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
-import com.avos.avoscloud.AVUser;
 import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -30,15 +29,9 @@ public class PushActivity extends AppCompatActivity {
     private static final String TAG = "PushActivity";
     @BindView(R.id.push_live)
     TXCloudVideoView mCaptview;
-    @BindView(R.id.start_live)
-    Button mStartLive;
-    @BindView(R.id.stop_live)
-    Button mStopLive;
-    @BindView(R.id.change)
-    Button mChange;
-    @BindView(R.id.luzhi_live)
-    Button mLuzhiLive;
-    Button mStartShanguangdeng;
+    @BindView(R.id.change_state)
+    Button changeState;
+
     private TXLivePusher mLivePusher;
     private TXLivePushConfig mLivePushConfig;
 
@@ -63,40 +56,6 @@ public class PushActivity extends AppCompatActivity {
         mLivePusher.setConfig(mLivePushConfig);
     }
 
-    @OnClick(R.id.start_live)
-    public void onMStartLiveClicked() {
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            Live live = bundle.getParcelable(LCConfig.getLIVE_TABLE());
-            if(live != null){
-                Log.i(TAG, live.toString());
-
-                String id = live.getObjectId();
-                Date date = live.getStartAt();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-                //获取live开启时间
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
-                calendar.add(Calendar.YEAR, 1);
-                String time = format.format(calendar.getTime());
-                Log.i(TAG, "time: " + time);
-                //获取推流地址
-                String rtmp = RtmpUtils.getSafeUrl(id, time);
-                Log.i(TAG, "onMStartLiveClicked: ="+rtmp);
-                //告诉 SDK 音视频流要推到哪个推流URL上去。
-                mLivePusher.startPusher(rtmp);
-                //界面元素和Pusher对象关联起来，从而能够将手机摄像头采集到的画面渲染到屏幕上。
-                mLivePusher.startCameraPreview(mCaptview);
-                //设置清晰度
-                setVideoQuality(mLivePusher, 1, true, true);
-                //设置美颜
-                setBeautiful(mLivePusher, 0, 1, 1, 1);
-            }
-        }
-
-
-    }
-
     /**
      * @param mLivePusher
      * @param mI          磨皮风格：  0：光滑  1：自然  2：朦胧
@@ -118,30 +77,14 @@ public class PushActivity extends AppCompatActivity {
         mLivePusher.setVideoQuality(1, true, true);
     }
 
-    @OnClick(R.id.stop_live)
-    public void onMStopLiveClicked() {
-        mLivePusher.stopCameraPreview(true); //停止摄像头预览
-        mLivePusher.stopPusher();            //停止推流
-        mLivePusher.setPushListener(null);   //解绑 listener
-    }
-
-    @OnClick(R.id.change)
-    public void onMChangeClicked() {
-        // 默认是前置摄像头
-        mLivePusher.switchCamera();
-    }
-
-    @OnClick(R.id.luzhi_live)
-    public void onMLuzhiLiveClicked() {
-    }
-
     // activity 的 onStop 生命周期函数
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         mCaptview.onPause();  // mCaptureView 是摄像头的图像渲染view
         mLivePusher.pausePusher(); // 通知 SDK 进入“后台推流模式”了
     }
+
     // activity 的 onStop 生命周期函数
     @Override
     public void onResume() {
@@ -149,9 +92,11 @@ public class PushActivity extends AppCompatActivity {
         mCaptview.onResume();     // mCaptureView 是摄像头的图像渲染view
         mLivePusher.resumePusher();  // 通知 SDK 重回前台推流
     }
+
     /**
      * 判断Activity是否可旋转。只有在满足以下条件的时候，Activity才是可根据重力感应自动旋转的。
      * 系统“自动旋转”设置项打开；
+     *
      * @return false---Activity可根据重力感应自动旋转
      */
     protected boolean isActivityCanRotation() {
@@ -161,5 +106,52 @@ public class PushActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @OnClick({R.id.change_state, R.id.change_view})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.change_state:
+                if(!mLivePusher.isPushing()){
+                    Bundle bundle = getIntent().getExtras();
+                    if (bundle != null) {
+                        Live live = bundle.getParcelable(LCConfig.getLIVE_TABLE());
+                        if (live != null) {
+                            Log.i(TAG, live.toString());
+
+                            String id = live.getObjectId();
+                            Date date = live.getStartAt();
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+                            //获取live开启时间
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(date);
+                            calendar.add(Calendar.YEAR, 1);
+                            String time = format.format(calendar.getTime());
+                            Log.i(TAG, "time: " + time);
+                            //获取推流地址
+                            String rtmp = RtmpUtils.getSafeUrl(id, time);
+                            Log.i(TAG, "onMStartLiveClicked: =" + rtmp);
+                            //告诉 SDK 音视频流要推到哪个推流URL上去。
+                            mLivePusher.startPusher(rtmp);
+                            //界面元素和Pusher对象关联起来，从而能够将手机摄像头采集到的画面渲染到屏幕上。
+                            mLivePusher.startCameraPreview(mCaptview);
+                            //设置清晰度
+                            setVideoQuality(mLivePusher, 1, true, true);
+                            //设置美颜
+                            setBeautiful(mLivePusher, 0, 1, 1, 1);
+                        }
+                        changeState.setBackgroundResource(R.drawable.ic_pause_circle_outline_black_24dp);
+                    }else{
+                        mLivePusher.stopCameraPreview(true); //停止摄像头预览
+                        mLivePusher.stopPusher();            //停止推流
+                        mLivePusher.setPushListener(null);   //解绑 listener
+                        changeState.setBackgroundResource(R.drawable.ic_play_circle_outline_black_24dp);
+                    }
+                }
+                break;
+            case R.id.change_view:
+                mLivePusher.switchCamera();
+                break;
+        }
     }
 }

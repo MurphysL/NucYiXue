@@ -1,4 +1,4 @@
-package androidlab.edu.cn.nucyixue.ui.map
+package androidlab.edu.cn.nucyixue.ui.mapPack
 
 import android.content.Context
 import android.view.LayoutInflater

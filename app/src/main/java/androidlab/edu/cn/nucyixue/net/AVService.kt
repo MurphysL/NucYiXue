@@ -96,7 +96,7 @@ object AVService{
             query.whereContains(LCConfig.LIVE_KEYWORD, key)
             queryList += query
         }
-        val query = AVQuery.and(queryList)
+        val query = AVQuery.or(queryList)
         return queryAV(query)
     }
 

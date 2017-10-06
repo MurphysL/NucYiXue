@@ -107,7 +107,7 @@ class LiveFragment : Fragment(){
                     initToolbar(getString(R.string.created_title))
                 }
                 LiveFragmentType.RECOMMEND ->{
-                    initToolbar(getString(R.string.recommend_title))
+                    bar_layout.visibility = View.GONE
                 }
                 LiveFragmentType.SUBJECT ->{
                     bar_layout.visibility = View.GONE
@@ -131,7 +131,9 @@ class LiveFragment : Fragment(){
                     holder?.setText(R.id.live_join_num, it.num.toString())
                     holder?.setText(R.id.live_speaker, it.username)
                     holder?.setImageWithPicasso(R.id.live_pic, it.pic)
-
+                    if(t.isText != LCConfig.LIVE_TEXT){
+                        holder?.setImageResource(R.id.live_format, R.drawable.ic_videocam_black_24dp)
+                    }
                     holder?.setOnClickListener(R.id.live_info) {
                         user?.let {
                             AVService.queryJoinedByLUId(t.objectId, it.objectId).subscribe( // 是否已参加
@@ -235,9 +237,9 @@ class LiveFragment : Fragment(){
      * 获取推荐 Live
      */
     private fun fetchRecommendLive() {
-        val keys = arguments.get("keys") as List<String>?
-        if(keys != null && !keys.isEmpty()){
-            AVService.queryRecommendLive(keys).subscribe(
+        val keys = arguments.getSerializable("keys") as ArrayList<String>?
+        keys?.let {
+            AVService.queryRecommendLive(it).subscribe(
                     {
                         onNext ->
                         list += onNext
@@ -252,8 +254,6 @@ class LiveFragment : Fragment(){
                         Log.i(TAG, "onComplete")
                     }
             )
-        }else{
-            fetchCommonLive()
         }
     }
 

@@ -1,53 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.common.video.PushActivity">
 
     <com.tencent.rtmp.ui.TXCloudVideoView
-        android:background="@drawable/masaike"
+        android:background="@color/colorPrimary"
         android:id="@+id/push_live"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
-    <Button
-        android:layout_marginLeft="5dp"
-        android:background="@color/colorAccent"
-        android:text="开始直播"
-        android:id="@+id/start_live"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
-    <Button
-        android:background="@color/colorAccent"
-        android:text="结束直播"
-        android:id="@+id/stop_live"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/start_live"/>
-    <Button
-        android:background="@color/colorAccent"
 
-        android:text="改变摄像头"
-        android:id="@+id/change"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/stop_live"/>
     <Button
-        android:background="@color/colorAccent"
-        android:text="录制视频"
-        android:id="@+id/luzhi_live"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/change_state"
+        android:background="@drawable/ic_play_circle_outline_black_24dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/change"/>
+        android:layout_margin="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/change_view"
+        android:background="@drawable/ic_replay_black_24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
 
 </RelativeLayout>
