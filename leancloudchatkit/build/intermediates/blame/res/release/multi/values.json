@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "H:\\new\\NucYiXue\\leancloudchatkit\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "outputFile": "H:\\Repo\\NucYiXue\\leancloudchatkit\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -771,7 +771,7 @@
                     "endOffset": 2820
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -790,7 +790,7 @@
                     "endOffset": 2871
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -809,7 +809,7 @@
                     "endOffset": 2922
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -828,7 +828,7 @@
                     "endOffset": 2973
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -847,7 +847,7 @@
                     "endOffset": 3031
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_colors.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -3260,7 +3260,7 @@
                     "endOffset": 32369
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -3279,7 +3279,7 @@
                     "endOffset": 32417
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -3298,7 +3298,7 @@
                     "endOffset": 32471
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -3317,7 +3317,7 @@
                     "endOffset": 32540
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -3336,7 +3336,7 @@
                     "endOffset": 32600
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -3355,7 +3355,7 @@
                     "endOffset": 32659
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -3374,7 +3374,7 @@
                     "endOffset": 32713
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -3393,7 +3393,7 @@
                     "endOffset": 32776
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -3412,7 +3412,7 @@
                     "endOffset": 32835
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 25,
                         "startColumn": 4,
@@ -3431,7 +3431,7 @@
                     "endOffset": 32893
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -3450,7 +3450,7 @@
                     "endOffset": 32948
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -3469,7 +3469,7 @@
                     "endOffset": 33004
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -3488,7 +3488,7 @@
                     "endOffset": 33055
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -3507,7 +3507,7 @@
                     "endOffset": 33107
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -3526,7 +3526,7 @@
                     "endOffset": 33160
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -3545,7 +3545,7 @@
                     "endOffset": 33212
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -3564,7 +3564,7 @@
                     "endOffset": 33263
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_dimens.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -4913,7 +4913,7 @@
                     "endOffset": 37841
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -4932,7 +4932,7 @@
                     "endOffset": 37896
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -4951,7 +4951,7 @@
                     "endOffset": 37949
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -4970,7 +4970,7 @@
                     "endOffset": 38006
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -4989,7 +4989,7 @@
                     "endOffset": 38062
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -5008,7 +5008,7 @@
                     "endOffset": 38140
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -5027,7 +5027,7 @@
                     "endOffset": 38196
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -5046,7 +5046,7 @@
                     "endOffset": 38268
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -5065,7 +5065,7 @@
                     "endOffset": 38346
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -5084,7 +5084,7 @@
                     "endOffset": 38424
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -5103,7 +5103,7 @@
                     "endOffset": 38471
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -5122,7 +5122,7 @@
                     "endOffset": 38534
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -5141,7 +5141,7 @@
                     "endOffset": 38601
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -5160,7 +5160,7 @@
                     "endOffset": 38657
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -5179,7 +5179,7 @@
                     "endOffset": 38719
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -5198,7 +5198,7 @@
                     "endOffset": 38781
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -5217,7 +5217,7 @@
                     "endOffset": 38846
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -5236,7 +5236,7 @@
                     "endOffset": 38910
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -5255,7 +5255,7 @@
                     "endOffset": 38975
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -8232,7 +8232,7 @@
                     "endOffset": 104304
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,
@@ -8252,7 +8252,7 @@
                     "endOffset": 104359
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -8272,7 +8272,7 @@
                     "endOffset": 104855
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -8293,7 +8293,7 @@
                     "endOffset": 105148
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -8314,7 +8314,7 @@
                     "endOffset": 105439
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 88,
                         "startColumn": 4,
@@ -8335,7 +8335,7 @@
                     "endOffset": 105597
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 95,
                         "startColumn": 4,
@@ -8356,7 +8356,7 @@
                     "endOffset": 105755
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 100,
                         "startColumn": 4,
@@ -8377,7 +8377,7 @@
                     "endOffset": 105881
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
@@ -8398,7 +8398,7 @@
                     "endOffset": 106084
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
@@ -8419,7 +8419,7 @@
                     "endOffset": 106285
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 50,
                         "startColumn": 4,
@@ -8440,7 +8440,7 @@
                     "endOffset": 106506
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 57,
                         "startColumn": 4,
@@ -8461,7 +8461,7 @@
                     "endOffset": 106893
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -8481,7 +8481,7 @@
                     "endOffset": 106932
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 63,
                         "startColumn": 4,
@@ -8501,7 +8501,7 @@
                     "endOffset": 107061
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 65,
                         "startColumn": 4,
@@ -8522,7 +8522,7 @@
                     "endOffset": 107193
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 69,
                         "startColumn": 4,
@@ -8543,7 +8543,7 @@
                     "endOffset": 107324
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 73,
                         "startColumn": 4,
@@ -8564,7 +8564,7 @@
                     "endOffset": 107438
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 77,
                         "startColumn": 4,
@@ -8585,7 +8585,7 @@
                     "endOffset": 107571
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 81,
                         "startColumn": 4,
@@ -8605,7 +8605,7 @@
                     "endOffset": 107616
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 85,
                         "startColumn": 4,
@@ -12378,7 +12378,7 @@
                     "endOffset": 138337
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 117,
                         "startColumn": 4,
@@ -12399,7 +12399,7 @@
                     "endOffset": 139217
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 126,
                         "startColumn": 4,
@@ -12420,7 +12420,7 @@
                     "endOffset": 139789
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 143,
                         "startColumn": 4,
@@ -12441,7 +12441,7 @@
                     "endOffset": 140304
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\leancloudchatkit\\src\\main\\res\\values\\lcim_styles.xml",
                     "position": {
                         "startLine": 107,
                         "startColumn": 4,

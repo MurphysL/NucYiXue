@@ -113,7 +113,6 @@
         <activity android:name=".ui.common.camera.CameraActivity"/>
         <activity android:name=".ui.teachPack.reward.XuanshangSendActivity"/>
         <activity android:name=".ui.teachPack.reward.XuanshangGetActivity"/>
-        <activity android:name=".IdentificationActivity"/>
 
         <service android:name=".service.LiveAudioService"/>
 

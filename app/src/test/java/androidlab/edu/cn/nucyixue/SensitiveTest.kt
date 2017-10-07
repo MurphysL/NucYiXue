@@ -1,6 +1,5 @@
 package androidlab.edu.cn.nucyixue
 
-import androidlab.edu.cn.nucyixue.utils.SensitiveFilter
 import org.junit.Test
 
 /**
@@ -12,9 +11,9 @@ class SensitiveTest{
 
     @Test
     fun filerTest(){
-        val filter = SensitiveFilter()
+        /*val filter = SensitiveFilter()
         filter.addWord("算法")
 
-        println(filter.filter("我爱算法"))
+        println(filter.filter("我爱算法"))*/
     }
 }

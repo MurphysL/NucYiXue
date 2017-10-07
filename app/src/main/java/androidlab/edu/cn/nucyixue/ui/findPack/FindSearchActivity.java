@@ -31,7 +31,6 @@ import androidlab.edu.cn.nucyixue.data.bean.OCRResult;
 import androidlab.edu.cn.nucyixue.net.Service;
 import androidlab.edu.cn.nucyixue.ocr.FileUtil;
 import androidlab.edu.cn.nucyixue.ocr.RecognizeService;
-import androidlab.edu.cn.nucyixue.IdentificationActivity;
 import androidlab.edu.cn.nucyixue.ui.common.live.LiveFragment;
 import androidlab.edu.cn.nucyixue.ui.findPack.zxing.MipcaActivityCapture;
 import androidlab.edu.cn.nucyixue.utils.ActivityUtils;
@@ -197,11 +196,11 @@ public class FindSearchActivity extends BaseActivity {
     }
 
     private void fetchHandWritingData() {
-        Intent intent = new Intent(FindSearchActivity.this, IdentificationActivity.class);
+        /*Intent intent = new Intent(FindSearchActivity.this, IdentificationActivity.class);
         Bundle b = new Bundle();
         b.putString("path", FileUtil.getSaveFile(getApplicationContext()).getAbsolutePath());
         intent.putExtras(b);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     private void fetchOCRData() {

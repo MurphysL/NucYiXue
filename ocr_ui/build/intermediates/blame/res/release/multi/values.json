@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "H:\\new\\NucYiXue\\ocr_ui\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "outputFile": "H:\\Repo\\NucYiXue\\ocr_ui\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -524,7 +524,7 @@
                     "endOffset": 2015
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -543,7 +543,7 @@
                     "endOffset": 2062
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -562,7 +562,7 @@
                     "endOffset": 2113
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -2766,7 +2766,7 @@
                     "endOffset": 30066
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -2785,7 +2785,7 @@
                     "endOffset": 30116
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -2804,7 +2804,7 @@
                     "endOffset": 30167
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -2823,7 +2823,7 @@
                     "endOffset": 30216
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\bd_ocr_dimensions.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -4172,7 +4172,7 @@
                     "endOffset": 35077
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -4191,7 +4191,7 @@
                     "endOffset": 35143
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\strings.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -4325,7 +4325,7 @@
                     "endOffset": 35938
                 },
                 "from": {
-                    "file": "H:\\new\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\styles.xml",
+                    "file": "H:\\Repo\\NucYiXue\\ocr_ui\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,

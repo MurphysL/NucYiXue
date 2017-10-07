@@ -75,6 +75,8 @@ public class PlayActivity extends AppCompatActivity {
     private String pathImage;
     private String nameImage;
 
+    private static final int REQUEST_MEDIA_PROJECTION = 1;
+
     private ImageView iv1;
 
     @Override
@@ -168,7 +170,10 @@ public class PlayActivity extends AppCompatActivity {
         metrics = new DisplayMetrics();
         mWindowManager1.getDefaultDisplay().getMetrics(metrics);
         mScreenDensity = metrics.densityDpi;
+        Log.i(TAG, "width :"+ windowWidth + "height" + windowHeight);
         mImageReader = ImageReader.newInstance(windowWidth, windowHeight, 0x1, 2); //ImageFormat.RGB_565
+
+        startActivityForResult(mMediaProjectionManager1.createScreenCaptureIntent(), REQUEST_MEDIA_PROJECTION);
     }
 
     @OnClick(R.id.screen_shot)
@@ -217,9 +222,12 @@ public class PlayActivity extends AppCompatActivity {
         strDate = dateFormat.format(new java.util.Date());
         nameImage = pathImage + strDate + ".png";
         Image image = mImageReader.acquireLatestImage();
+        Image im = mImageReader.acquireNextImage();
         if(image == null){
             Log.i(TAG, "123");
         }
+        if(im == null)
+            Log.i(TAG, "234");
         int width = image.getWidth();
         int height = image.getHeight();
         final Image.Plane[] planes = image.getPlanes();
@@ -259,6 +267,17 @@ public class PlayActivity extends AppCompatActivity {
         if (mMediaProjection != null) {
             mMediaProjection.stop();
             mMediaProjection = null;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_MEDIA_PROJECTION) {
+            if (resultCode != RESULT_OK) {
+                return;
+            } else if (data != null && resultCode != 0) {
+               Log.i(TAG, "123");
+            }
         }
     }
 }

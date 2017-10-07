@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.media.projection.MediaProjectionManager;
-import android.support.multidex.MultiDex;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
@@ -13,7 +12,6 @@ import androidlab.edu.cn.nucyixue.data.bean.LU;
 import androidlab.edu.cn.nucyixue.data.bean.Live;
 import androidlab.edu.cn.nucyixue.data.bean.Reward;
 import androidlab.edu.cn.nucyixue.data.bean.UserInfo;
-import androidlab.edu.cn.nucyixue.utils.SensitiveFilter;
 import c.b.BP;
 
 /**
@@ -24,8 +22,7 @@ import c.b.BP;
 public class MyApp extends Application {
 
     public static final Boolean isDebug = true;
-
-    public static final SensitiveFilter filter = new SensitiveFilter();
+    //public static final SensitiveFilter filter = new SensitiveFilter();
 
     Intent intent;
     int resultCode;
@@ -44,18 +41,13 @@ public class MyApp extends Application {
 
         AVOSCloud.setDebugLogEnabled(isDebug);
 
-        filter.addWord("色情");
+       /* filter.addWord("色情");
         filter.addWord("反动");
         filter.addWord("江泽民");
-
+*/
         BP.init("e9aba613dc365a00e3508de5fbf105a7");
     }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
 
     public MediaProjectionManager getMediaProjectionManager() {
         return mMediaProjectionManager;
